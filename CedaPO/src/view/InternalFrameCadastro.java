@@ -47,6 +47,7 @@ public class InternalFrameCadastro extends javax.swing.JInternalFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/back8395_32.png"))); // NOI18N
         jButton3.setText("Residencia");
 
         jButton4.setBackground(new java.awt.Color(255, 153, 153));
