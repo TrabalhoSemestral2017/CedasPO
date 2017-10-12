@@ -85,21 +85,7 @@ public class UtilizadorDao {
      * caso contrario retorna false
      * obj - Um objecto qualquer que represente uma tabela na base de dados
      */
-//    public boolean excluir(Utilizador obj){
-//        try{
-//             criaSessao().getTransaction().begin();
-//             criaSessao().delete(obj);
-//             criaSessao().getTransaction().commit();
-//        return true;
-//        
-//        }catch(Throwable ex){
-//              criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
-//        } finally {
-//            criaSessao().close(); // Fecha a sessao no final das operacoes
-//        }
-//        return false;
-//    }
-    
+
      public void removerUtilizador(int idUtilizador){
 
     Session  sessao=HibernateUtil.getSessionFactory().openSession();
@@ -113,9 +99,9 @@ public class UtilizadorDao {
     
     
      /**
-     *  Busca todos funcionarios na base de dados
+     *  Busca todos Utilizador na base de dados
      *
-     * @return lista dos funcionarios encontrados ou uma lista vazia, caso nao encontre
+     * @return lista dos Utilizador encontrados ou uma lista vazia, caso nao encontre
      * 
      */
     public List<Utilizador> findAll(){
@@ -123,12 +109,12 @@ public class UtilizadorDao {
     }
 
       /**
-     *  Busca um funcionario dado seu idUtilizador na base de dados
+     *  Busca um Utilizado dado seu idUtilizador na base de dados
      *
      * @param idUtilizador
-     * @return objecto Funcionario caso exista se nao retorna null
+     * @return objecto Utilizador caso exista se nao retorna null
      * 
-     * idUtilizador - e um atributo do funcionario que é chave primaria
+     * idUtilizador - e um atributo do Utilizador que é chave primaria
      */
     public Utilizador buscaPorId(long idUtilizador) {
         return (Utilizador) criaSessao().createCriteria(Utilizador.class)

@@ -83,20 +83,7 @@ public class FuncionarioDao {
      * caso contrario retorna false
      * obj - Um objecto qualquer que represente uma tabela na base de dados
      */
-//    public boolean excluir(Funcionario obj){
-//        try{
-//             criaSessao().getTransaction().begin();
-//             criaSessao().delete(obj);
-//             criaSessao().getTransaction().commit();
-//        return true;
-//        
-//        }catch(Throwable ex){
-//              criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
-//        } finally {
-//            criaSessao().close(); // Fecha a sessao no final das operacoes
-//        }
-//        return false;
-//    }
+
     
      public void removerFuncionario(int codigo){
 

@@ -5,17 +5,33 @@
  */
 package view;
 
+import Tabelas.TabelaFuncionario;
+import control.FuncionarioDao;
+import java.util.Date;
+import java.util.List;
+import javafx.scene.chart.PieChart.Data;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+
+import model.Funcionario;
+
+
 /**
  *
  * @author Armano
  */
 public class TelaFuncionario extends javax.swing.JFrame {
-
+ private Funcionario funcionario;
+    private List<Funcionario> list;
+    private TabelaFuncionario modelTable;
+    FuncionarioDao controle = new FuncionarioDao();
     /**
      * Creates new form TelaFuncionario
      */
     public TelaFuncionario() {
         initComponents();
+        desabilitar();
+        updateTable();
     }
 
     /**
@@ -27,14 +43,14 @@ public class TelaFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         bontes1 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jButNovoFuncionario = new javax.swing.JButton();
+        jButDeletarFuncionario = new javax.swing.JButton();
+        jButRefreshFuncionario = new javax.swing.JButton();
+        jButSalvarFuncionario = new javax.swing.JButton();
+        PesaquisartField1 = new javax.swing.JTextField();
+        jButpesaquisaFuncionario = new javax.swing.JButton();
+        jButRelatorioFuncionario = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -44,77 +60,105 @@ public class TelaFuncionario extends javax.swing.JFrame {
         NacionalidadeField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         DataNacimentoField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jCboCategoria = new javax.swing.JComboBox<>();
+        jRdoMasculino = new javax.swing.JRadioButton();
+        jRdoFemenino = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableFuncionario = new javax.swing.JTable();
+        jPanelButoes = new javax.swing.JPanel();
+        jButtonAdicionar = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
+        jButtonDelectar = new javax.swing.JButton();
+        jButtonPesquisar = new javax.swing.JButton();
+        jButtonActualizar = new javax.swing.JButton();
+        jTextFieldPesquisar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 153, 255));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        jButNovoFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/addFunc32.png"))); // NOI18N
+        jButNovoFuncionario.setText("NEW");
+        jButNovoFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButNovoFuncionarioActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("Cadastro de Funcionarios");
+        jButDeletarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete_3.png"))); // NOI18N
+        jButDeletarFuncionario.setText("Delete");
+        jButDeletarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButDeletarFuncionarioActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(157, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jButRefreshFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh-24.png"))); // NOI18N
+        jButRefreshFuncionario.setText("Actualizar");
+        jButRefreshFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButRefreshFuncionarioActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("NEW");
+        jButSalvarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Accept-icon32.png"))); // NOI18N
+        jButSalvarFuncionario.setText("Seve");
+        jButSalvarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButSalvarFuncionarioActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Delete");
+        PesaquisartField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PesaquisartField1(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                PesaquisartField1(evt);
+            }
+        });
 
-        jButton7.setText("Refresh");
+        jButpesaquisaFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pes32.jpg"))); // NOI18N
 
-        jButton8.setText("Seve");
-
-        jButton9.setText("jButton9");
+        jButRelatorioFuncionario.setText("Relatorio");
 
         javax.swing.GroupLayout bontes1Layout = new javax.swing.GroupLayout(bontes1);
         bontes1.setLayout(bontes1Layout);
         bontes1Layout.setHorizontalGroup(
             bontes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bontes1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(bontes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9)
-                    .addGroup(bontes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButNovoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jButSalvarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jButRefreshFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jButDeletarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jButRelatorioFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(PesaquisartField1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButpesaquisaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
         bontes1Layout.setVerticalGroup(
             bontes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bontes1Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jButton9)
-                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bontes1Layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addGroup(bontes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButpesaquisaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(bontes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButNovoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButDeletarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButRefreshFuncionario)
+                        .addComponent(jButSalvarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PesaquisartField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButRelatorioFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         jLabel2.setText("Nome");
@@ -125,13 +169,15 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
         jLabel6.setText("Genero");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel7.setText("Data de Nascimento");
 
-        jLabel8.setText("Catedoria");
+        jLabel8.setText("Categoria");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Gerente", "Operario", "" }));
+
+        jRdoMasculino.setText("M");
+
+        jRdoFemenino.setText("F");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -139,62 +185,63 @@ public class TelaFuncionario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(ApelidoField2))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(NomeField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NomeField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ApelidoField2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(18, 18, 18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NacionalidadeField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NacionalidadeField1)
-                    .addComponent(jComboBox2, 0, 147, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
+                        .addComponent(jCboCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(53, 53, 53)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel7)))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(119, Short.MAX_VALUE))
+                        .addComponent(jLabel7)
+                        .addGap(4, 4, 4)
+                        .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(74, 74, 74)
+                        .addComponent(jRdoMasculino)
+                        .addGap(43, 43, 43)
+                        .addComponent(jRdoFemenino)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(NomeField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(NacionalidadeField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                    .addComponent(jRdoMasculino)
+                    .addComponent(jRdoFemenino))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(ApelidoField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(jCboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -202,46 +249,296 @@ public class TelaFuncionario extends javax.swing.JFrame {
                 "ID", "Nome", "Apelido", "Nacionalidade", "Categoria", "Genero", "Data de Nacimento", "Data do Registo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableFuncionario);
+
+        jButtonAdicionar.setText("Novo");
+        jButtonAdicionar.setToolTipText("Adicionar funcionario");
+        jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarActionPerformed(evt);
+            }
+        });
+
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.setToolTipText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
+
+        jButtonDelectar.setText("Remover");
+        jButtonDelectar.setToolTipText("Remover um Funcionario");
+
+        jButtonPesquisar.setToolTipText("Pesquisar");
+
+        jButtonActualizar.setText("Actualizar");
+        jButtonActualizar.setToolTipText("Actualizar");
+
+        jTextFieldPesquisar.setForeground(new java.awt.Color(102, 102, 102));
+        jTextFieldPesquisar.setText("Pesquisar");
+        jTextFieldPesquisar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldPesquisarFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldPesquisarFocusLost(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelButoesLayout = new javax.swing.GroupLayout(jPanelButoes);
+        jPanelButoes.setLayout(jPanelButoesLayout);
+        jPanelButoesLayout.setHorizontalGroup(
+            jPanelButoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButoesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonAdicionar)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonSalvar)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonActualizar)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDelectar)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonPesquisar)
+                .addContainerGap(347, Short.MAX_VALUE))
+        );
+        jPanelButoesLayout.setVerticalGroup(
+            jPanelButoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButoesLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addGroup(jPanelButoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelButoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonDelectar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
+        );
+
+        jLabel1.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setText("Cadastro de Funcionarios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(215, 215, 215))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(103, 103, 103)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, 947, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                        .addGap(343, 343, 343)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(99, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(112, 112, 112)
+                    .addComponent(jPanelButoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(113, 113, 113)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(324, 324, 324)
+                    .addComponent(jPanelButoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(183, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+    }//GEN-LAST:event_jButtonAdicionarActionPerformed
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+      try {
+            String nome = this.NomeField1.getText();
+            String apelido = this.ApelidoField2.getText();
+
+            String nacionalidade = this.NacionalidadeField1.getText();
+            String genero = this.jRdoFemenino.getText();
+
+            String datanascimento = this.DataNacimentoField1.getText();
+            String categoria = this.jCboCategoria.getSelectedItem() + "";
+
+            Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento, new Date());
+
+            FuncionarioDao funcDao = new FuncionarioDao();
+            funcDao.salvar(funcionario);
+             updateTable();
+            JOptionPane.showMessageDialog(null, "Funcionario salvo com sucesso");
+
+            desabilitar();
+            limparCampos();
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "erro de insersao : " + erro);
+        }
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+ public void updateTable(){
+        this.list = controle.findAll();
+        modelTable = new TabelaFuncionario(list);
+        jTableFuncionario.setModel(modelTable);
+
+        jTableFuncionario.getColumnModel().getColumn(0).setPreferredWidth(300);
+        jTableFuncionario.getColumnModel().getColumn(0).setResizable(false);
+        jTableFuncionario.getColumnModel().getColumn(1).setPreferredWidth(150);
+        jTableFuncionario.getColumnModel().getColumn(1).setResizable(false);
+        jTableFuncionario.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jTableFuncionario.getColumnModel().getColumn(2).setResizable(false);
+        jTableFuncionario.getColumnModel().getColumn(3).setPreferredWidth(200);
+        jTableFuncionario.getColumnModel().getColumn(3).setResizable(false);
+        jTableFuncionario.getColumnModel().getColumn(4).setPreferredWidth(200);
+        jTableFuncionario.getColumnModel().getColumn(4).setResizable(false);
+        jTableFuncionario.getTableHeader().setReorderingAllowed(false);
+        jTableFuncionario.setAutoResizeMode(jTableFuncionario.AUTO_RESIZE_OFF);
+        jTableFuncionario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+    private void jTextFieldPesquisarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarFocusGained
+        jTextFieldPesquisar.setText("");
+    }//GEN-LAST:event_jTextFieldPesquisarFocusGained
+
+    private void jTextFieldPesquisarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarFocusLost
+        jTextFieldPesquisar.setText("Pesquisar");
+    }//GEN-LAST:event_jTextFieldPesquisarFocusLost
+
+    private void jButNovoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButNovoFuncionarioActionPerformed
+        // TODO add your handling code here:
+        jButSalvarFuncionario.setEnabled(true);
+        jButDeletarFuncionario.setEnabled(true);
+       // jButNovoFuncionario.setEnabled(false);
+        jButpesaquisaFuncionario.setEnabled(true);
+        jButRefreshFuncionario.setEnabled(true);
+        
+        NomeField1.setEnabled(true);
+        NacionalidadeField1.setEnabled(true);
+        DataNacimentoField1.setEnabled(true);
+        ApelidoField2.setEnabled(true);
+        PesaquisartField1.setEnabled(true);
+         jCboCategoria.setEnabled(true);
+        limparCampos();
+    }//GEN-LAST:event_jButNovoFuncionarioActionPerformed
+
+    private void jButSalvarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButSalvarFuncionarioActionPerformed
+        // TODO add your handling code here:
+        
+         try {
+            String nome = this.NomeField1.getText();
+            String apelido = this.ApelidoField2.getText();
+
+            String nacionalidade = this.NacionalidadeField1.getText();
+            String genero = this.jRdoFemenino.getText();
+
+            String datanascimento = this.DataNacimentoField1.getText();
+            String categoria = this.jCboCategoria.getSelectedItem() + "";
+
+            Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento, new Date());
+
+            FuncionarioDao funcDao = new FuncionarioDao();
+            funcDao.salvar(funcionario);
+             updateTable();
+            JOptionPane.showMessageDialog(null, "Funcionario salvo com sucesso");
+
+            desabilitar();
+            limparCampos();
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "erro de insersao : " + erro);
+        }
+    }//GEN-LAST:event_jButSalvarFuncionarioActionPerformed
+
+    private void PesaquisartField1(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PesaquisartField1
+        // TODO add your handling code here:
+        PesaquisartField1.setText("Pesquisar");
+    }//GEN-LAST:event_PesaquisartField1
+
+    private void jButRefreshFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButRefreshFuncionarioActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+            String nome = this.NomeField1.getText();
+            String apelido = this.ApelidoField2.getText();
+
+            String nacionalidade = this.NacionalidadeField1.getText();
+            String genero = this.jRdoFemenino.getText();
+
+            String datanascimento = this.DataNacimentoField1.getText();
+            String categoria = this.jCboCategoria.getSelectedItem() + "";
+
+            Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento, new Date());
+
+            FuncionarioDao funcDao = new FuncionarioDao();
+            funcDao.actualizar(funcionario);
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados : " + erro);
+        }
+    }//GEN-LAST:event_jButRefreshFuncionarioActionPerformed
+
+    private void jButDeletarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButDeletarFuncionarioActionPerformed
+        // TODO add your handling code here:
+        
+//         try{
+//   
+//   TabelaFuncionario tb=new TabelaFuncionario(list);
+//   
+//  //      clienteDao.removerCliente((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
+//  FuncionarioDao.ex
+//  
+//        //controle.actualizar(cliente);
+//        updateTable();
+//        JOptionPane.showMessageDialog(null,"Removido com sucesso!!!!!");
+//        }
+//        catch(Exception ex){
+//            JOptionPane.showMessageDialog(null,"Erro ao remover"+ ex);
+//        } 
+    }//GEN-LAST:event_jButDeletarFuncionarioActionPerformed
+ public void desabilitar(){
+        jButSalvarFuncionario.setEnabled(false);
+        jButDeletarFuncionario.setEnabled(false);
+       // jButNovoFuncionario.setEnabled(false);
+        jButpesaquisaFuncionario.setEnabled(false);
+        jButRefreshFuncionario.setEnabled(false);
+        jCboCategoria.setEnabled(false);
+        
+        NomeField1.setEnabled(false);
+        NacionalidadeField1.setEnabled(false);
+        DataNacimentoField1.setEnabled(false);
+        ApelidoField2.setEnabled(false);
+        PesaquisartField1.setEnabled(false);
+     
+        limparCampos();
+    }
+    
+    //Metodo para limpar os campos
+    public void limparCampos(){
+
+        NomeField1.setText("");
+        NacionalidadeField1.setText("");
+        DataNacimentoField1.setText("");
+        ApelidoField2.setText("");
+    }
     /**
      * @param args the command line arguments
      */
@@ -283,19 +580,20 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField DataNacimentoField1;
     private javax.swing.JTextField NacionalidadeField1;
     private javax.swing.JTextField NomeField1;
-    private javax.swing.JPanel bontes;
+    private javax.swing.JTextField PesaquisartField1;
     private javax.swing.JPanel bontes1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jButDeletarFuncionario;
+    private javax.swing.JButton jButNovoFuncionario;
+    private javax.swing.JButton jButRefreshFuncionario;
+    private javax.swing.JButton jButRelatorioFuncionario;
+    private javax.swing.JButton jButSalvarFuncionario;
+    private javax.swing.JButton jButpesaquisaFuncionario;
+    private javax.swing.JButton jButtonActualizar;
+    private javax.swing.JButton jButtonAdicionar;
+    private javax.swing.JButton jButtonDelectar;
+    private javax.swing.JButton jButtonPesquisar;
+    private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JComboBox<String> jCboCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -303,9 +601,12 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelButoes;
+    private javax.swing.JRadioButton jRdoFemenino;
+    private javax.swing.JRadioButton jRdoMasculino;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableFuncionario;
+    private javax.swing.JTextField jTextFieldPesquisar;
     // End of variables declaration//GEN-END:variables
 }

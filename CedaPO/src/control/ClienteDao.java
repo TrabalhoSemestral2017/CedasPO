@@ -83,20 +83,7 @@ public class ClienteDao {
      * caso contrario retorna false
      * obj - Um objecto qualquer que represente uma tabela na base de dados
      */
-//    public boolean excluir(Cliente obj){
-//        try{
-//             criaSessao().getTransaction().begin();
-//             criaSessao().delete(obj);
-//             criaSessao().getTransaction().commit();
-//        return true;
-//        
-//        }catch(Throwable ex){
-//              criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
-//        } finally {
-//            criaSessao().close(); // Fecha a sessao no final das operacoes
-//        }
-//        return false;
-//    }
+
     
      public void removerCliente(int codigo){
 
@@ -111,9 +98,9 @@ public class ClienteDao {
     
     
      /**
-     *  Busca todos funcionarios na base de dados
+     *  Busca todos Cliente na base de dados
      *
-     * @return lista dos funcionarios encontrados ou uma lista vazia, caso nao encontre
+     * @return lista dos Cliente encontrados ou uma lista vazia, caso nao encontre
      * 
      */
     public List<Cliente> findAll(){
@@ -121,12 +108,12 @@ public class ClienteDao {
     }
 
       /**
-     *  Busca um funcionario dado seu codigo na base de dados
+     *  Busca um Cliente dado seu codigo na base de dados
      *
      * @param codigo
-     * @return objecto Funcionario caso exista se nao retorna null
+     * @return objecto Cliente caso exista se nao retorna null
      * 
-     * codigo - e um atributo do funcionario que é chave primaria
+     * codigo - e um atributo do Cliente que é chave primaria
      */
     public Cliente buscaPorId(long codigo) {
         return (Cliente) criaSessao().createCriteria(Cliente.class)

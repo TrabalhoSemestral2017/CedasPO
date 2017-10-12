@@ -85,20 +85,7 @@ public class ResidenciaDao {
      * caso contrario retorna false
      * obj - Um objecto qualquer que represente uma tabela na base de dados
      */
-//    public boolean excluir(Residencia obj){
-//        try{
-//             criaSessao().getTransaction().begin();
-//             criaSessao().delete(obj);
-//             criaSessao().getTransaction().commit();
-//        return true;
-//        
-//        }catch(Throwable ex){
-//              criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
-//        } finally {
-//            criaSessao().close(); // Fecha a sessao no final das operacoes
-//        }
-//        return false;
-//    }
+
     
      public void removerResidencia(int idResidencia){
 
@@ -113,9 +100,9 @@ public class ResidenciaDao {
     
     
      /**
-     *  Busca todos funcionarios na base de dados
+     *  Busca todos Residencia na base de dados
      *
-     * @return lista dos funcionarios encontrados ou uma lista vazia, caso nao encontre
+     * @return lista dos Residencia encontrados ou uma lista vazia, caso nao encontre
      * 
      */
     public List<Residencia> findAll(){
@@ -123,12 +110,12 @@ public class ResidenciaDao {
     }
 
       /**
-     *  Busca um funcionario dado seu idResidencia na base de dados
+     *  Busca um Residencia dado seu idResidencia na base de dados
      *
      * @param idResidencia
-     * @return objecto Funcionario caso exista se nao retorna null
+     * @return objecto Residencia caso exista se nao retorna null
      * 
-     * idResidencia - e um atributo do funcionario que é chave primaria
+     * idResidencia - e um atributo do Residencia que é chave primaria
      */
     public Residencia buscaPorId(long idResidencia) {
         return (Residencia) criaSessao().createCriteria(Residencia.class)

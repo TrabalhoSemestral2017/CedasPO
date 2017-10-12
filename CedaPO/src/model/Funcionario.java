@@ -25,8 +25,9 @@ public class Funcionario  implements java.io.Serializable {
      private String apelido;
      private String nacionalidade;
      private String genero;
-     private String funcao;
+   //  private String funcao;
      private String categoria;
+     private String DataNascimento;
      private Date dataRegisto;
      
 
@@ -37,17 +38,21 @@ public class Funcionario  implements java.io.Serializable {
     public Funcionario(int idfuncionario) {
         this.idfuncionario = idfuncionario;
     }
-    public Funcionario(int idfuncionario, String nome, String apelido, String nacionalidade, String genero, String funcao, String categoria, Date dataRegisto) {
-       this.idfuncionario = idfuncionario;
-       this.nome = nome;
-       this.apelido = apelido;
-       this.nacionalidade = nacionalidade;
-       this.genero = genero;
-       this.funcao = funcao;
-       this.categoria = categoria;
-       this.dataRegisto = dataRegisto;
-      
+
+    public Funcionario(int idfuncionario, String nome, String apelido, String nacionalidade, String genero, String categoria, String DataNascimento, Date dataRegisto) {
+        this.idfuncionario = idfuncionario;
+        this.nome = nome;
+        this.apelido = apelido;
+        this.nacionalidade = nacionalidade;
+        this.genero = genero;
+        this.categoria = categoria;
+        this.DataNascimento = DataNascimento;
+        this.dataRegisto = dataRegisto;
     }
+
+   
+
+   
    
      @Id 
 
@@ -101,15 +106,15 @@ public class Funcionario  implements java.io.Serializable {
         this.genero = genero;
     }
 
-    
-    @Column(name="funcao", length=45)
-    public String getFuncao() {
-        return this.funcao;
+    public String getDataNascimento() {
+        return DataNascimento;
     }
-    
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
+
+    public void setDataNascimento(String DataNascimento) {
+        this.DataNascimento = DataNascimento;
     }
+
+    
 
     
     @Column(name="categoria", length=45)
