@@ -6,8 +6,8 @@
 package view;
 
 
-import Tabelas.TabelaFuncionario;
-import Tabelas.TabelaUsuario;
+import tabela.TabelaFuncionario;
+import tabela.TabelaUsuario;
 
 import control.UsuariorDao;
 import java.util.Date;

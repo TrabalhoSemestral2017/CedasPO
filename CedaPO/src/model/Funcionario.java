@@ -26,14 +26,15 @@ public class Funcionario  implements java.io.Serializable {
      private String genero;
    //  private String funcao;
      private String categoria;
-     private String DataNascimento;
+     private Date DataNascimento;
      private Date dataRegisto;
      
 
     public Funcionario() {
     }
 
-    public Funcionario(String nome, String apelido, String nacionalidade, String genero, String categoria, String DataNascimento, Date dataRegisto) {
+    public Funcionario(int idfuncionario, String nome, String apelido, String nacionalidade, String genero, String categoria, Date DataNascimento, Date dataRegisto) {
+        this.idfuncionario = idfuncionario;
         this.nome = nome;
         this.apelido = apelido;
         this.nacionalidade = nacionalidade;
@@ -42,22 +43,14 @@ public class Funcionario  implements java.io.Serializable {
         this.DataNascimento = DataNascimento;
         this.dataRegisto = dataRegisto;
     }
+
 
 	
     public Funcionario(int idfuncionario) {
         this.idfuncionario = idfuncionario;
     }
 
-    public Funcionario(int idfuncionario, String nome, String apelido, String nacionalidade, String genero, String categoria, String DataNascimento, Date dataRegisto) {
-        this.idfuncionario = idfuncionario;
-        this.nome = nome;
-        this.apelido = apelido;
-        this.nacionalidade = nacionalidade;
-        this.genero = genero;
-        this.categoria = categoria;
-        this.DataNascimento = DataNascimento;
-        this.dataRegisto = dataRegisto;
-    }
+   
 
    
   
@@ -114,11 +107,11 @@ public class Funcionario  implements java.io.Serializable {
         this.genero = genero;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return DataNascimento;
     }
 
-    public void setDataNascimento(String DataNascimento) {
+    public void setDataNascimento(Date DataNascimento) {
         this.DataNascimento = DataNascimento;
     }
 

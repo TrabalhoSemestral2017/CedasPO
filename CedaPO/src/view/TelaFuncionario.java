@@ -5,7 +5,7 @@
  */
 package view;
 
-import Tabelas.TabelaFuncionario;
+import tabela.TabelaFuncionario;
 import control.FuncionarioDao;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +38,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
        jTableFuncionario.setModel(modelTable);
       modelTable.lerTabela();
        // updateTable();
-        isFieldEmpty();
+//        isFieldEmpty();
         // Validacoes();
         
     }
@@ -68,7 +68,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         NacionalidadeField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        DataNacimentoField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jCboCategoria = new javax.swing.JComboBox<>();
@@ -76,6 +75,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jRdoFemenino = new javax.swing.JRadioButton();
         IDtField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        DataNacimentoField1 = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFuncionario = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -215,8 +215,8 @@ public class TelaFuncionario extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(IDtField1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -244,14 +244,15 @@ public class TelaFuncionario extends javax.swing.JFrame {
                     .addComponent(jRdoFemenino)
                     .addComponent(jLabel4))
                 .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(ApelidoField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jCboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IDtField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(ApelidoField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)
+                        .addComponent(jCboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(IDtField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -279,11 +280,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(335, 335, 335)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(335, 335, 335)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -362,40 +362,40 @@ public class TelaFuncionario extends javax.swing.JFrame {
      * @return
      */
     
-    private boolean isFieldEmpty() {
-
-        if (NomeField1.getText().equalsIgnoreCase("")) {
-            NomeField1.requestFocus();
-            return true;
-        }
-        if (NacionalidadeField1.getText().equalsIgnoreCase("")) {
-            NacionalidadeField1.requestFocus();
-            return true;
-        }
-        if (jCboCategoria.getSelectedItem() == null) {
-            jCboCategoria.requestFocus();
-            return true;
-        }
-        if (DataNacimentoField1.getText().equalsIgnoreCase("")) {
-           DataNacimentoField1.requestFocus();
-            return true;
-        }
-    if (ApelidoField2.getText().equalsIgnoreCase("")) {
-          ApelidoField2.requestFocus();
-            return true;
-        }
-     if (jRdoFemenino.getText().equalsIgnoreCase("")) {
-           jRdoFemenino.requestFocus();
-            return true;
-        }
-
-
-        return false;
-
-    }
+//    private boolean isFieldEmpty() {
+//
+//        if (NomeField1.getText().equalsIgnoreCase("")) {
+//            NomeField1.requestFocus();
+//            return true;
+//        }
+//        if (NacionalidadeField1.getText().equalsIgnoreCase("")) {
+//            NacionalidadeField1.requestFocus();
+//            return true;
+//        }
+//        if (jCboCategoria.getSelectedItem() == null) {
+//            jCboCategoria.requestFocus();
+//            return true;
+//        }
+//        if (DataNacimentoField1.getDate().equalsIgnoreCase("")) {
+//           DataNacimentoField1.requestFocus();
+//            return true;
+//        }
+//    if (ApelidoField2.getText().equalsIgnoreCase("")) {
+//          ApelidoField2.requestFocus();
+//            return true;
+//        }
+//     if (jRdoFemenino.getText().equalsIgnoreCase("")) {
+//           jRdoFemenino.requestFocus();
+//            return true;
+//        }
+//
+//
+//        return false;
+//
+//    }
     private void jButSalvarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButSalvarFuncionarioActionPerformed
         // TODO add your handling codle here:
-        isFieldEmpty();
+        //isFieldEmpty();
        
         try {
           
@@ -410,7 +410,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             String nome = this.NomeField1.getText();
             String apelido = this.ApelidoField2.getText();
             String nacionalidade = this.NacionalidadeField1.getText();
-            String datanascimento = this.DataNacimentoField1.getText();
+           Date datanascimento = this.DataNacimentoField1.getDate();
             String categoria = this.jCboCategoria.getSelectedItem() + "";
             Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento,new  Date());
 
@@ -444,10 +444,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
             String apelido = this.ApelidoField2.getText();
             String nacionalidade = this.NacionalidadeField1.getText();
           //  String idFuncionario = this.IDtField1.getText();
-            String datanascimento = this.DataNacimentoField1.getText();
+           Date datanascimento = this.DataNacimentoField1.getDate();
             String categoria = this.jCboCategoria.getSelectedItem() + "";
 
-            Funcionario funcionario = new Funcionario( nome, apelido, nacionalidade, genero, categoria, datanascimento,new  Date());
+            Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento, datanascimento);
 
             controle.actualizar(id,funcionario);
            
@@ -504,7 +504,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
         id=funcionario.getIdfuncionario();
         NomeField1.setText(this.funcionario.getNome());
         NacionalidadeField1.setText(this.funcionario.getNacionalidade());
-        DataNacimentoField1.setText(this.funcionario.getDataNascimento());
+        DataNacimentoField1.setDate(this.funcionario.getDataNascimento());
         ApelidoField2.setText(this.funcionario.getApelido());
     }//GEN-LAST:event_jTableFuncionario
 
@@ -546,7 +546,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApelidoField2;
-    private javax.swing.JTextField DataNacimentoField1;
+    private com.toedter.calendar.JDateChooser DataNacimentoField1;
     private javax.swing.JTextField IDtField1;
     private javax.swing.JTextField NacionalidadeField1;
     private javax.swing.JTextField NomeField1;
@@ -598,7 +598,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
         NomeField1.setText("");
         NacionalidadeField1.setText("");
-        DataNacimentoField1.setText("");
+     //   DataNacimentoField1.setDate();
         ApelidoField2.setText("");
         
         jRdoFemenino.setEnabled(false);
@@ -645,7 +645,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
         id=funcionario.getIdfuncionario();
         NomeField1.setText(this.funcionario.getNome());
         NacionalidadeField1.setText(this.funcionario.getNacionalidade());
-        DataNacimentoField1.setText(this.funcionario.getDataNascimento());
+        DataNacimentoField1.setDate(this.funcionario.getDataNascimento());
         ApelidoField2.setText(this.funcionario.getApelido());
 //       .setAction(this.funcionario.getCategoria());
           // jCboCategoria.getItemAt(this.funcionario.setCategoria());

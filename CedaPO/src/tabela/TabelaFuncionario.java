@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tabelas;
+package tabela;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,8 +82,8 @@ public class TabelaFuncionario extends AbstractTableModel{
                 return f.getCategoria();
             case 5:
                 return f.getGenero();
-            case 6:
-                return f.getDataNascimento();
+          //  case 6:
+              //  return f.getDataNascimento();
             case 7:
                 return f.getDataRegisto();
            
