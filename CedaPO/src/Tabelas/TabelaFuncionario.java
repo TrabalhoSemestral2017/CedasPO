@@ -5,9 +5,13 @@
  */
 package Tabelas;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import model.Funcionario;
+import model.Utilizador;
+import org.hibernate.Session;
+import util.HibernateUtil;
 
 /**
  *
@@ -16,16 +20,27 @@ import model.Funcionario;
 public class TabelaFuncionario extends AbstractTableModel{
     private static final int NR_Colunas = 8;
     private static final String[] colunasNomes = {"Nome do funcionario", "ID    ", "Apelido ", "Nacionalidade", "categoria","Genero", "Data nascimento","Data Registo"};
-    private static List<Funcionario> list;
+    private static List<Funcionario> list = new ArrayList<>();
     private static Class<?>[] colunaTipos =  {String.class, String.class, String.class, String.class,String.class, String.class, String.class, String.class,String.class};
 
-   public TabelaFuncionario(List<Funcionario> list) {
-        TabelaFuncionario.list = list;
+    public TabelaFuncionario() {
     }
+
+     public Funcionario mouseclick(int posicao){
+        return list.get(posicao);
+     }
 
     public static Funcionario getUsuarioAt(int index) {
         return list.get(index);
     }
+
+    public TabelaFuncionario(List<Funcionario> list) {
+       
+        TabelaFuncionario.list = list;
+    
+    }
+
+    
     
 
      @Override
@@ -77,5 +92,11 @@ public class TabelaFuncionario extends AbstractTableModel{
         }
         return null;
     }
-    
+   public void lerTabela(){
+       list.clear();
+       Session  sessao=HibernateUtil.getSessionFactory().openSession();
+      sessao.beginTransaction();
+      list.addAll(sessao.createQuery("SELECT f FROM Funcionario f").list());
+       fireTableRowsInserted(list.size()-1, list.size()-1);
+   } 
 }

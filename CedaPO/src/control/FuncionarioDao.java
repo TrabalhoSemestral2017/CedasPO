@@ -60,17 +60,25 @@ public class FuncionarioDao {
      * caso contrario retorna null
      * obj - Um objecto qualquer que represente uma tabela na base de dados
      */
-    public Object actualizar(Funcionario obj){
-        try{
-             criaSessao().getTransaction().begin();
-             criaSessao().update(obj);
-             criaSessao().getTransaction().commit();
+    public Object actualizar(int id,Funcionario obj){
+        try{  
+          Session sessao  =HibernateUtil.getSessionFactory().openSession();
+             Funcionario f = (Funcionario)  sessao.get(Funcionario.class,id);
+             sessao.beginTransaction();
+               f.setNome(obj.getNome());
+               f.setApelido(obj.getApelido());
+               f.setCategoria(obj.getCategoria());
+               f.setNacionalidade(obj.getNacionalidade());
+            // criaSessao().getTransaction().begin();
+             sessao.saveOrUpdate(f);
+              sessao.getTransaction().commit();
+              sessao.close();
         return obj;
         
         }catch(Throwable ex){
               criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
         } finally {
-            criaSessao().close(); // Fecha a sessao no final das operacoes
+           // criaSessao().close(); // Fecha a sessao no final das operacoes
         }
         return null;
     }
@@ -87,11 +95,11 @@ public class FuncionarioDao {
     
      public void removerFuncionario(int codigo){
 
-    Session  sessao=HibernateUtil.getSessionFactory().openSession();
+      Session  sessao=HibernateUtil.getSessionFactory().openSession();
       sessao.beginTransaction();
-     Funcionario funcionario = (Funcionario) sessao.get(Funcionario.class, codigo);
-      sessao.getTransaction();
-     sessao.delete(funcionario);
+      Funcionario funcionario = (Funcionario) sessao.get(Funcionario.class, codigo);
+     // sessao.getTransaction();
+      sessao.delete(funcionario);
       sessao.getTransaction().commit();
       sessao.close();
   }

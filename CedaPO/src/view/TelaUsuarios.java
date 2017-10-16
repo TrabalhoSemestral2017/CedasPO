@@ -5,17 +5,38 @@
  */
 package view;
 
+
+import Tabelas.TabelaFuncionario;
+import Tabelas.TabelaUsuario;
+
+import control.UsuariorDao;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+
+import model.Utilizador;
+
 /**
  *
  * @author Armano
  */
 public class TelaUsuarios extends javax.swing.JFrame {
-
+private Utilizador usuario;
+    private List<Utilizador> list;
+    private TabelaUsuario modelTable;
+  
+     UsuariorDao controle=new  UsuariorDao();
+    
     /**
      * Creates new form TelaUsuarios
      */
     public TelaUsuarios() {
+        
         initComponents();
+        
+        updateTable();
+        
     }
 
     /**
@@ -33,9 +54,9 @@ public class TelaUsuarios extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         UserField1 = new javax.swing.JTextField();
         SenhaField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCboCategoriaUsuario = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTUsuario = new javax.swing.JTable();
+        jTabelaUsuario = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         bontes1 = new javax.swing.JPanel();
         NovoUsuario = new javax.swing.JButton();
@@ -54,7 +75,7 @@ public class TelaUsuarios extends javax.swing.JFrame {
 
         jLabel4.setText("Categoria");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboCategoriaUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -72,7 +93,7 @@ public class TelaUsuarios extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel4)
                 .addGap(38, 38, 38)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCboCategoriaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -85,11 +106,11 @@ public class TelaUsuarios extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(SenhaField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCboCategoriaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jTUsuario.setModel(new javax.swing.table.DefaultTableModel(
+        jTabelaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -100,7 +121,7 @@ public class TelaUsuarios extends javax.swing.JFrame {
                 "ID", "User", "Senha", "Categoria", "Data do Registo"
             }
         ));
-        jScrollPane1.setViewportView(jTUsuario);
+        jScrollPane1.setViewportView(jTabelaUsuario);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setText("Cadastrar Usuario");
@@ -121,6 +142,11 @@ public class TelaUsuarios extends javax.swing.JFrame {
 
         SalvarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Accept-icon32.png"))); // NOI18N
         SalvarUsuario.setText("Seve");
+        SalvarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvarUsuarioActionPerformed(evt);
+            }
+        });
 
         PesquisaUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pes32.jpg"))); // NOI18N
 
@@ -204,10 +230,50 @@ public class TelaUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+public void updateTable(){
+        this.list = controle.findAll();
+        modelTable = new TabelaUsuario(list);
+        jTabelaUsuario.setModel(modelTable);
 
+       jTabelaUsuario.getColumnModel().getColumn(0).setPreferredWidth(300);
+       jTabelaUsuario.getColumnModel().getColumn(0).setResizable(false);
+       jTabelaUsuario.getColumnModel().getColumn(1).setPreferredWidth(150);
+       jTabelaUsuario.getColumnModel().getColumn(1).setResizable(false);
+       jTabelaUsuario.getColumnModel().getColumn(2).setPreferredWidth(150);
+       jTabelaUsuario.getColumnModel().getColumn(2).setResizable(false);
+       jTabelaUsuario.getColumnModel().getColumn(3).setPreferredWidth(200);
+       jTabelaUsuario.getColumnModel().getColumn(3).setResizable(false);
+       jTabelaUsuario.getColumnModel().getColumn(4).setPreferredWidth(200);
+       jTabelaUsuario.getColumnModel().getColumn(4).setResizable(false);
+       jTabelaUsuario.getTableHeader().setReorderingAllowed(false);
+       jTabelaUsuario.setAutoResizeMode( jTabelaUsuario.AUTO_RESIZE_OFF);
+       jTabelaUsuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
     private void RefreshUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RefreshUsuarioActionPerformed
+
+    private void SalvarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarUsuarioActionPerformed
+        // TODO add your handling code here:
+         try {
+          
+    
+            String username = this.UserField1.getText();
+            String password = this.SenhaField2.getText();
+          //  String categoria = this..getText();
+          String Categoria = this.jCboCategoriaUsuario.getSelectedItem() + "";
+           // String funcionario=this.Funcionario.getText();
+            
+             Utilizador u=new Utilizador(ICONIFIED, "Tania", Categoria, username, password,new Date());
+           // clienteDao.salvar(cliente);
+            controle.salvar(u);
+                    
+            JOptionPane.showMessageDialog(null, "Usuario gravado com sucesso");
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Erro de insersao : " + erro);
+        }
+
+    }//GEN-LAST:event_SalvarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,13 +322,13 @@ public class TelaUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField SenhaField2;
     private javax.swing.JTextField UserField1;
     private javax.swing.JPanel bontes1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCboCategoriaUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTUsuario;
+    private javax.swing.JTable jTabelaUsuario;
     // End of variables declaration//GEN-END:variables
 }

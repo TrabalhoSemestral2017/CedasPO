@@ -18,7 +18,7 @@ import util.HibernateUtil;
  *
  * @author Cossa
  */
-public class UtilizadorDao {
+public class UsuariorDao {
     
      SessionFactory fact = HibernateUtil.getSessionFactory();
     Session sessao;
@@ -49,8 +49,9 @@ public class UtilizadorDao {
         return obj;
         
         }catch(Throwable ex){
-            criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
-           JOptionPane.showMessageDialog(null, "Erro de insersao  \n"+ex);
+          criaSessao().getTransaction().rollback(); 
+         // Em caso da transacao correr mal, todas as operacoes sao canceladas
+          JOptionPane.showMessageDialog(null, "Erro de insersao  \n"+ex);
         }
         return null;
     }
@@ -113,8 +114,8 @@ public class UtilizadorDao {
      *
      * @param idUtilizador
      * @return objecto Utilizador caso exista se nao retorna null
-     * 
-     * idUtilizador - e um atributo do Utilizador que é chave primaria
+ 
+ idUtilizador - e um atributo do Utilizador que é chave primaria
      */
     public Utilizador buscaPorId(long idUtilizador) {
         return (Utilizador) criaSessao().createCriteria(Utilizador.class)
