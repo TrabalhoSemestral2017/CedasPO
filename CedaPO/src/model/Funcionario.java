@@ -50,10 +50,6 @@ public class Funcionario  implements java.io.Serializable {
         this.idfuncionario = idfuncionario;
     }
 
-   
-
-   
-  
 
      @Id 
      @GeneratedValue

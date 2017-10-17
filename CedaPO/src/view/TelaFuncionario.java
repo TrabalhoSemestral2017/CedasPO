@@ -14,33 +14,33 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
 import model.Funcionario;
-
+import org.hibernate.Session;
+import util.HibernateUtil;
 
 /**
  *
  * @author Armano
  */
 public class TelaFuncionario extends javax.swing.JFrame {
-   
-    private static int id=0;
-    private Funcionario funcionario =new Funcionario();
+
+    private static int id = 0;
+    private Funcionario funcionario = new Funcionario();
     private List<Funcionario> list;
-    private TabelaFuncionario modelTable= new TabelaFuncionario();
+    private TabelaFuncionario modelTable = new TabelaFuncionario();
     FuncionarioDao controle = new FuncionarioDao();
-    
-    
+
     /**
      * Creates new form TelaFuncionario
      */
     public TelaFuncionario() {
         initComponents();
-      //  desabilitar();
-       jTableFuncionario.setModel(modelTable);
-      modelTable.lerTabela();
-       // updateTable();
+        //  desabilitar();
+        jTableFuncionario.setModel(modelTable);
+        modelTable.lerTabela();
+        // updateTable();
 //        isFieldEmpty();
         // Validacoes();
-        
+
     }
 
     /**
@@ -73,8 +73,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jCboCategoria = new javax.swing.JComboBox<>();
         jRdoMasculino = new javax.swing.JRadioButton();
         jRdoFemenino = new javax.swing.JRadioButton();
-        IDtField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         DataNacimentoField1 = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFuncionario = new javax.swing.JTable();
@@ -123,8 +121,18 @@ public class TelaFuncionario extends javax.swing.JFrame {
                 PesaquisartField1(evt);
             }
         });
+        PesaquisartField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PesaquisartField1ActionPerformed(evt);
+            }
+        });
 
         jButpesaquisaFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pes32.jpg"))); // NOI18N
+        jButpesaquisaFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButpesaquisaFuncionarioActionPerformed(evt);
+            }
+        });
 
         jButRelatorioFuncionario.setText("Relatorio");
 
@@ -183,8 +191,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
         jRdoFemenino.setText("F");
 
-        jLabel4.setText("ID");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -210,25 +216,20 @@ public class TelaFuncionario extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addGap(23, 23, 23)
                         .addComponent(jCboCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(53, 53, 53)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IDtField1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(20, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
+                        .addGap(66, 66, 66)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(jRdoMasculino)
                         .addGap(18, 18, 18)
-                        .addComponent(jRdoFemenino)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))))
+                        .addComponent(jRdoFemenino)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,8 +242,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
                     .addComponent(NacionalidadeField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jRdoMasculino)
-                    .addComponent(jRdoFemenino)
-                    .addComponent(jLabel4))
+                    .addComponent(jRdoFemenino))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -250,8 +250,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
                         .addComponent(ApelidoField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8)
                         .addComponent(jCboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
-                        .addComponent(IDtField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel7))
                     .addComponent(DataNacimentoField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -310,7 +309,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- public void updateTable(){
+ public void updateTable() {
         this.list = controle.findAll();
 //        modelTable ;
         jTableFuncionario.setModel(modelTable);
@@ -331,9 +330,9 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jTableFuncionario.getColumnModel().getColumn(6).setResizable(false);
         jTableFuncionario.getColumnModel().getColumn(7).setPreferredWidth(200);
         jTableFuncionario.getColumnModel().getColumn(7).setResizable(false);
-        
+
         jTableFuncionario.getTableHeader().setReorderingAllowed(false);
-        
+
         jTableFuncionario.setAutoResizeMode(jTableFuncionario.AUTO_RESIZE_OFF);
         jTableFuncionario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
@@ -341,10 +340,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
         jButSalvarFuncionario.setEnabled(true);
         jButDeletarFuncionario.setEnabled(true);
-       // jButNovoFuncionario.setEnabled(false);
+        // jButNovoFuncionario.setEnabled(false);
         jButpesaquisaFuncionario.setEnabled(true);
         jButRefreshFuncionario.setEnabled(true);
-        
+
         NomeField1.setEnabled(true);
         NacionalidadeField1.setEnabled(true);
         DataNacimentoField1.setEnabled(true);
@@ -353,72 +352,42 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jCboCategoria.setEnabled(true);
         jRdoFemenino.setEnabled(true);
         jRdoMasculino.setEnabled(true);
-        
+
         limparCampos();
     }//GEN-LAST:event_jButNovoFuncionarioActionPerformed
-/**
+    /**
      * Metodo chamado para verificar se existe algum textfield sem nenhum input
      *
      * @return
      */
-    
-//    private boolean isFieldEmpty() {
-//
-//        if (NomeField1.getText().equalsIgnoreCase("")) {
-//            NomeField1.requestFocus();
-//            return true;
-//        }
-//        if (NacionalidadeField1.getText().equalsIgnoreCase("")) {
-//            NacionalidadeField1.requestFocus();
-//            return true;
-//        }
-//        if (jCboCategoria.getSelectedItem() == null) {
-//            jCboCategoria.requestFocus();
-//            return true;
-//        }
-//        if (DataNacimentoField1.getDate().equalsIgnoreCase("")) {
-//           DataNacimentoField1.requestFocus();
-//            return true;
-//        }
-//    if (ApelidoField2.getText().equalsIgnoreCase("")) {
-//          ApelidoField2.requestFocus();
-//            return true;
-//        }
-//     if (jRdoFemenino.getText().equalsIgnoreCase("")) {
-//           jRdoFemenino.requestFocus();
-//            return true;
-//        }
-//
-//
-//        return false;
-//
-//    }
+
+
     private void jButSalvarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButSalvarFuncionarioActionPerformed
         // TODO add your handling codle here:
         //isFieldEmpty();
-       
+
         try {
-          
+
             String genero = "Masculino";
             if (!jRdoMasculino.isSelected()) {
-            genero = "Masculino";
+                genero = "Masculino";
             }
-             
-//             if (!jRdoFemenino.isSelected()) {
-//            genero = "Feminino";}
+
+             if (!jRdoFemenino.isSelected()) {
+            genero = "Feminino";}
 //          // idFuncionario = this.IDtField1);
             String nome = this.NomeField1.getText();
             String apelido = this.ApelidoField2.getText();
             String nacionalidade = this.NacionalidadeField1.getText();
-           Date datanascimento = this.DataNacimentoField1.getDate();
+            Date datanascimento = this.DataNacimentoField1.getDate();
             String categoria = this.jCboCategoria.getSelectedItem() + "";
-            Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento,new  Date());
+            Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento, new Date());
 
             controle.salvar(funcionario);
             //updateTable();
-          //  desabilitar();
+            //  desabilitar();
             JOptionPane.showMessageDialog(null, "Funcionario salvo com sucesso");
-            
+
             limparCampos();
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "erro de insersao : " + erro);
@@ -432,10 +401,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_PesaquisartField1
 
     private void jButRefreshFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButRefreshFuncionarioActionPerformed
-     // isFieldEmpty();
-    //    desabilitar();//
+        // isFieldEmpty();
+        //    desabilitar();//
         try {
-            
+
             String genero = "Masculino";
             if (!jRdoMasculino.isSelected()) {
                 genero = "Feminino";
@@ -443,25 +412,25 @@ public class TelaFuncionario extends javax.swing.JFrame {
             String nome = this.NomeField1.getText();
             String apelido = this.ApelidoField2.getText();
             String nacionalidade = this.NacionalidadeField1.getText();
-          //  String idFuncionario = this.IDtField1.getText();
-           Date datanascimento = this.DataNacimentoField1.getDate();
+            //  String idFuncionario = this.IDtField1.getText();
+            Date datanascimento = this.DataNacimentoField1.getDate();
             String categoria = this.jCboCategoria.getSelectedItem() + "";
 
-            Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento, datanascimento);
+            Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento, new Date());
 
-            controle.actualizar(id,funcionario);
-           
+            controle.actualizar(id, funcionario);
+
             desabilitar();
             JOptionPane.showMessageDialog(null, "Funcionario salvo com sucesso");
 
-           // desabilitar();
+            // desabilitar();
             limparCampos();
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "erro de insersao : " + erro);
         }
         modelTable.lerTabela();
-         //updateTable();
-         
+        //updateTable();
+
     }//GEN-LAST:event_jButRefreshFuncionarioActionPerformed
 
     private void jButDeletarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButDeletarFuncionarioActionPerformed
@@ -472,10 +441,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
             TabelaFuncionario tb = new TabelaFuncionario(list);
 
             controle.removerFuncionario(id);
-   modelTable.lerTabela();
+            modelTable.lerTabela();
 //  
             //  controle.actualizar(funcionario);
-         //   updateTable();
+            //   updateTable();
             JOptionPane.showMessageDialog(null, "Removido com sucesso!!!!!");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro ao remover" + ex);
@@ -486,28 +455,40 @@ public class TelaFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        fillFields();
 //      //jButSalvarFuncionario.setEnabled(true);
-//        jButDeletarFuncionario.setEnabled(true);
-//      //jButNovoFuncionario.setEnabled(false);
+        jButDeletarFuncionario.setEnabled(true);
+//        jButNovoFuncionario.setEnabled(false);
 //        jButpesaquisaFuncionario.setEnabled(true);
-//        jButRefreshFuncionario.setEnabled(true);
-//        
-//        NomeField1.setEnabled(true);
-//        NacionalidadeField1.setEnabled(true);
-//        DataNacimentoField1.setEnabled(true);
-//        ApelidoField2.setEnabled(true);
-//        PesaquisartField1.setEnabled(true);
-//        jCboCategoria.setEnabled(true);
-//        jRdoFemenino.setEnabled(true);
-//        jRdoMasculino.setEnabled(true);
-//fillFields();
- this.funcionario=modelTable.mouseclick(jTableFuncionario.getSelectedRow());
-        id=funcionario.getIdfuncionario();
+        jButRefreshFuncionario.setEnabled(true);
+//       
+
+        this.funcionario = modelTable.mouseclick(jTableFuncionario.getSelectedRow());
+        id = funcionario.getIdfuncionario();
         NomeField1.setText(this.funcionario.getNome());
         NacionalidadeField1.setText(this.funcionario.getNacionalidade());
         DataNacimentoField1.setDate(this.funcionario.getDataNascimento());
         ApelidoField2.setText(this.funcionario.getApelido());
+        jCboCategoria.setSelectedItem(this.funcionario.getCategoria());
+        
     }//GEN-LAST:event_jTableFuncionario
 
+    private void jButpesaquisaFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButpesaquisaFuncionarioActionPerformed
+        
+//        
+    }//GEN-LAST:event_jButpesaquisaFuncionarioActionPerformed
+
+    private void PesaquisartField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesaquisartField1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_PesaquisartField1ActionPerformed
+private void lerTabela(){
+//       list.clear();
+//       Session  sessao=HibernateUtil.getSessionFactory().openSession();
+//      sessao.beginTransaction();
+//      list.addAll(sessao.createQuery("SELECT f FROM Funcionario f").list());
+//       fireTableRowsInserted(list.size()-1, list.size()-1);
+   } 
     /**
      * @param args the command line arguments
      */
@@ -547,7 +528,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApelidoField2;
     private com.toedter.calendar.JDateChooser DataNacimentoField1;
-    private javax.swing.JTextField IDtField1;
     private javax.swing.JTextField NacionalidadeField1;
     private javax.swing.JTextField NomeField1;
     private javax.swing.JTextField PesaquisartField1;
@@ -562,7 +542,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -574,13 +553,13 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JTable jTableFuncionario;
     // End of variables declaration//GEN-END:variables
 
- public void desabilitar(){
+    public void desabilitar() {
         jButSalvarFuncionario.setEnabled(false);
         jButDeletarFuncionario.setEnabled(false);
-       // jButNovoFuncionario.setEnabled(false);
+        // jButNovoFuncionario.setEnabled(false);
         jButpesaquisaFuncionario.setEnabled(false);
         jButRefreshFuncionario.setEnabled(false);
-        
+
         jCboCategoria.setEnabled(false);
         NomeField1.setEnabled(false);
         NacionalidadeField1.setEnabled(false);
@@ -589,65 +568,76 @@ public class TelaFuncionario extends javax.swing.JFrame {
 //        jRdoFemenino.setEnabled(false);
 //        jRdoMasculino.setEnabled(false);
         PesaquisartField1.setEnabled(false);
-     
+
         limparCampos();
     }
-    
+
     //Metodo para limpar os campos
-    public void limparCampos(){
+    public void limparCampos() {
 
         NomeField1.setText("");
         NacionalidadeField1.setText("");
-     //   DataNacimentoField1.setDate();
+        //   DataNacimentoField1.setDate();
         ApelidoField2.setText("");
-        
+
         jRdoFemenino.setEnabled(false);
         jRdoMasculino.setEnabled(false);
         jCboCategoria.setSelectedIndex(-1);
-        
+
     }
-        public void Validacoes (){
-            validarNome();
+
+    public void Validacoes() {
+        validarNome();
         validarApelido();
         validarNacionalidade();
-        
+
+    }
+
+    public boolean validarNome() {
+        if (NomeField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "somente texto");
+            return false;
         }
-    
-      public boolean validarNome(){
-       if (NomeField1.getText().isEmpty()) {
-           JOptionPane.showMessageDialog(null, "somente texto");
-           return false;
-       }
-       return false;
-   }  public boolean validarApelido(){
-       if (ApelidoField2.getText().isEmpty()) {
-           JOptionPane.showMessageDialog(null, "somente texto");
-           return false;
-       }
-       return false;
-   }  public boolean validarNacionalidade(){
-       if ( NacionalidadeField1.getText().isEmpty()) {
-           JOptionPane.showMessageDialog(null, "somente texto");
-           return false;
-       }
-       return false;
-   }
-//   }  public boolean validarCampos(){
-//       if (NomeField1.getText().isEmpty()) {
-//           JOptionPane.showMessageDialog(null, "Informe o nome");
-//           return false;
-//       }
-//       return false;
-//   }
-      private void fillFields(){
-          
-        this.funcionario=this.list.get(jTableFuncionario.getSelectedRow());
-        id=funcionario.getIdfuncionario();
+        return false;
+    }
+
+    public boolean validarApelido() {
+        if (ApelidoField2.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "somente texto");
+            return false;
+        }
+        return false;
+    }
+
+    public boolean validarNacionalidade() {
+        if (NacionalidadeField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "somente texto");
+            return false;
+        }
+        return false;
+    }
+
+
+    private void fillFields() {
+
+        this.funcionario = this.list.get(jTableFuncionario.getSelectedRow());
+        id = funcionario.getIdfuncionario();
         NomeField1.setText(this.funcionario.getNome());
         NacionalidadeField1.setText(this.funcionario.getNacionalidade());
         DataNacimentoField1.setDate(this.funcionario.getDataNascimento());
         ApelidoField2.setText(this.funcionario.getApelido());
 //       .setAction(this.funcionario.getCategoria());
-          // jCboCategoria.getItemAt(this.funcionario.setCategoria());
+        // jCboCategoria.getItemAt(this.funcionario.setCategoria());
     }
+    
+    public void CarregarTabela() {
+      
+    
+    
+    
+    
+    }
+
+
+    
 }

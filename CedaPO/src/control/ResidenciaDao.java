@@ -62,17 +62,32 @@ public class ResidenciaDao {
      * caso contrario retorna null
      * obj - Um objecto qualquer que represente uma tabela na base de dados
      */
-    public Object actualizar(Residencia obj){
-        try{
-             criaSessao().getTransaction().begin();
-             criaSessao().update(obj);
-             criaSessao().getTransaction().commit();
+    public Object actualizar(int id,Residencia obj){
+        try{  
+          Session sessao  =HibernateUtil.getSessionFactory().openSession();
+             Residencia  r = (Residencia)  sessao.get(Residencia.class,id);
+             sessao.beginTransaction();
+             
+               r.setNome(obj.getNome());
+               r.setEstado(obj.getEstado());
+               r.setEstadoOucupado(obj.getEstadoOucupado());
+               r.setBloco(obj.getBloco());
+               r.setLocalizacao(obj.getLocalizacao());
+               r.setValorReabilitacaoMax(obj.getValorReabilitacaoMax());
+               r.setValorArendamento(obj.getValorArendamento());
+               r.setTipo(obj.getTipo());
+               
+               
+            // criaSessao().getTransaction().begin();
+             sessao.saveOrUpdate(r);
+              sessao.getTransaction().commit();
+              sessao.close();
         return obj;
         
         }catch(Throwable ex){
               criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
         } finally {
-            criaSessao().close(); // Fecha a sessao no final das operacoes
+           // criaSessao().close(); // Fecha a sessao no final das operacoes
         }
         return null;
     }
@@ -120,5 +135,9 @@ public class ResidenciaDao {
     public Residencia buscaPorId(long idResidencia) {
         return (Residencia) criaSessao().createCriteria(Residencia.class)
                 .add(Restrictions.eq("idResidencia", idResidencia)).uniqueResult();
+    }
+
+    public void actualizar(Residencia residencia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -6,6 +6,7 @@
 package view;
 
 
+import control.FuncionarioDao;
 import tabela.TabelaFuncionario;
 import tabela.TabelaUsuario;
 
@@ -14,8 +15,10 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import model.Funcionario;
 
 import model.Utilizador;
+import org.hibernate.Session;
 
 /**
  *
@@ -27,6 +30,10 @@ private Utilizador usuario;
     private TabelaUsuario modelTable;
   
      UsuariorDao controle=new  UsuariorDao();
+    Funcionario F=new Funcionario();
+    
+    
+    
     
     /**
      * Creates new form TelaUsuarios
@@ -84,8 +91,8 @@ private Utilizador usuario;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel2)
-                .addGap(26, 26, 26)
-                .addComponent(UserField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(UserField1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(26, 26, 26)
@@ -331,4 +338,19 @@ public void updateTable(){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabelaUsuario;
     // End of variables declaration//GEN-END:variables
+
+//  public List<Funcionario> findAll(){
+//        return criaSessao().createCriteria(Funcionario.class).list();
+//    }
+//        
+//       for (int registro = 0; registro < lista.size(); registro++){
+//        System.out.println(lista.get(registro));
+//        jCboCategoriaUsuario.addItem(lista.get(registro)); 
+//        
+//    }
+
+  
+
+   
 }
+

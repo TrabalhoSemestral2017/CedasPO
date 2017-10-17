@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import model.Funcionario;
+import model.Residencia;
 import model.Utilizador;
 import org.hibernate.Session;
 import util.HibernateUtil;
@@ -25,6 +26,8 @@ public class TabelaFuncionario extends AbstractTableModel{
 
     public TabelaFuncionario() {
     }
+
+   
 
      public Funcionario mouseclick(int posicao){
         return list.get(posicao);

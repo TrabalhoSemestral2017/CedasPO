@@ -18,6 +18,12 @@ import util.HibernateUtil;
  * @author Cossa
  */
 public class FuncionarioDao {
+
+   
+
+   
+
+    
      SessionFactory fact = HibernateUtil.getSessionFactory();
     Session sessao;
     
