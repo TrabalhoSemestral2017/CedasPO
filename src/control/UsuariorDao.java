@@ -7,8 +7,11 @@ package control;
 
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.Funcionario;
+import model.Residencia;
 import model.Utilizador;
 import model.Utilizador;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -19,6 +22,8 @@ import util.HibernateUtil;
  * @author Cossa
  */
 public class UsuariorDao {
+
+    
     
      SessionFactory fact = HibernateUtil.getSessionFactory();
     Session sessao;
@@ -63,17 +68,32 @@ public class UsuariorDao {
      * caso contrario retorna null
      * obj - Um objecto qualquer que represente uma tabela na base de dados
      */
-    public Object actualizar(Utilizador obj){
-        try{
-             criaSessao().getTransaction().begin();
-             criaSessao().update(obj);
-             criaSessao().getTransaction().commit();
+  public Object actualizar(int id,Utilizador obj){
+        try{  
+          Session sessao  =HibernateUtil.getSessionFactory().openSession();
+//             Utilizador  r = (Residencia)  sessao.get(Residencia.class,id);
+//             sessao.beginTransaction();
+//             
+//               r.setNome(obj.getNome());
+//               r.setEstado(obj.getEstado());
+//               r.setEstadoOucupado(obj.getEstadoOucupado());
+//               r.setBloco(obj.getBloco());
+//               r.setLocalizacao(obj.getLocalizacao());
+//               r.setValorReabilitacaoMax(obj.getValorReabilitacaoMax());
+//               r.setValorArendamento(obj.getValorArendamento());
+//               r.setTipo(obj.getTipo());
+//               
+               
+            // criaSessao().getTransaction().begin();
+//             sessao.saveOrUpdate(r);
+              sessao.getTransaction().commit();
+              sessao.close();
         return obj;
         
         }catch(Throwable ex){
               criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
         } finally {
-            criaSessao().close(); // Fecha a sessao no final das operacoes
+           // criaSessao().close(); // Fecha a sessao no final das operacoes
         }
         return null;
     }
@@ -121,4 +141,9 @@ public class UsuariorDao {
         return (Utilizador) criaSessao().createCriteria(Utilizador.class)
                 .add(Restrictions.eq("idUtilizador", idUtilizador)).uniqueResult();
     }
+
+   
+    
+   
+    
 }

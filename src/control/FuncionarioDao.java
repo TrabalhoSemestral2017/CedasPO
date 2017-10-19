@@ -18,6 +18,12 @@ import util.HibernateUtil;
  * @author Cossa
  */
 public class FuncionarioDao {
+
+   
+
+   
+
+    
      SessionFactory fact = HibernateUtil.getSessionFactory();
     Session sessao;
     
@@ -60,17 +66,25 @@ public class FuncionarioDao {
      * caso contrario retorna null
      * obj - Um objecto qualquer que represente uma tabela na base de dados
      */
-    public Object actualizar(Funcionario obj){
-        try{
-             criaSessao().getTransaction().begin();
-             criaSessao().update(obj);
-             criaSessao().getTransaction().commit();
+    public Object actualizar(int id,Funcionario obj){
+        try{  
+          Session sessao  =HibernateUtil.getSessionFactory().openSession();
+             Funcionario f = (Funcionario)  sessao.get(Funcionario.class,id);
+             sessao.beginTransaction();
+               f.setNome(obj.getNome());
+               f.setApelido(obj.getApelido());
+               f.setCategoria(obj.getCategoria());
+               f.setNacionalidade(obj.getNacionalidade());
+            // criaSessao().getTransaction().begin();
+             sessao.saveOrUpdate(f);
+              sessao.getTransaction().commit();
+              sessao.close();
         return obj;
         
         }catch(Throwable ex){
               criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
         } finally {
-            criaSessao().close(); // Fecha a sessao no final das operacoes
+           // criaSessao().close(); // Fecha a sessao no final das operacoes
         }
         return null;
     }
@@ -90,7 +104,7 @@ public class FuncionarioDao {
       Session  sessao=HibernateUtil.getSessionFactory().openSession();
       sessao.beginTransaction();
       Funcionario funcionario = (Funcionario) sessao.get(Funcionario.class, codigo);
-      sessao.getTransaction();
+     // sessao.getTransaction();
       sessao.delete(funcionario);
       sessao.getTransaction().commit();
       sessao.close();
@@ -118,6 +132,10 @@ public class FuncionarioDao {
     public Funcionario buscaPorId(long codigo) {
         return (Funcionario) criaSessao().createCriteria(Funcionario.class)
                 .add(Restrictions.eq("codigo", codigo)).uniqueResult();
+    }
+
+    public void actualizar(Funcionario funcionario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

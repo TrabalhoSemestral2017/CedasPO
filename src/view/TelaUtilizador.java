@@ -6,7 +6,7 @@
 package view;
 
 
-import Tabelas.TabelaUtilizador;
+import tabela.TabelaUsuario;
 
 import control.UsuariorDao;
 import java.util.Date;
@@ -23,7 +23,7 @@ import model.Utilizador;
 public class TelaUtilizador extends javax.swing.JFrame {
 private Utilizador usuario;
     private List<Utilizador> list;
-    private TabelaUtilizador modelTable;
+    private TabelaUsuario modelTable;
   
      UsuariorDao controle=new  UsuariorDao();
     
@@ -247,7 +247,7 @@ private Utilizador usuario;
     }// </editor-fold>//GEN-END:initComponents
 public void updateTable(){
         this.list = controle.findAll();
-        modelTable = new TabelaUtilizador(list);
+        modelTable = new TabelaUsuario(list);
         jTabelaUsuario.setModel(modelTable);
 
        jTabelaUsuario.getColumnModel().getColumn(0).setPreferredWidth(300);

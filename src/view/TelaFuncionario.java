@@ -5,7 +5,7 @@
  */
 package view;
 
-import Tabelas.TabelaFuncionario;
+import tabela.TabelaFuncionario;
 import control.FuncionarioDao;
 import java.util.Date;
 import java.util.List;

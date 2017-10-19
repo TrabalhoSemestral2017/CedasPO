@@ -275,7 +275,6 @@
               <Image iconType="3" name="/image/Delete_3.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Apagar"/>
-            <Property name="actionCommand" type="java.lang.String" value="Apagar"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="RefreshUsuario">
