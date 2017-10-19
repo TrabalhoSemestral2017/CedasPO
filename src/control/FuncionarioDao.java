@@ -133,9 +133,5 @@ public class FuncionarioDao {
         return (Funcionario) criaSessao().createCriteria(Funcionario.class)
                 .add(Restrictions.eq("codigo", codigo)).uniqueResult();
     }
-
-    public void actualizar(Funcionario funcionario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

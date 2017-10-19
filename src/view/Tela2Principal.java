@@ -14,6 +14,8 @@ public class Tela2Principal extends javax.swing.JFrame {
     /**
      * Creates new form Tela2Principal
      */
+    TelaFuncionario telafuncionario = new TelaFuncionario();
+    InternalFrameCliente cli = new InternalFrameCliente();
     public Tela2Principal() {
         initComponents();
     }
@@ -29,20 +31,22 @@ public class Tela2Principal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         painelPrincipal = new javax.swing.JPanel();
-        painelBotoes = new javax.swing.JPanel();
-        botaoCadastro = new javax.swing.JButton();
-        botaoContratos = new javax.swing.JButton();
-        botaoPagamentos = new javax.swing.JButton();
-        botaoDefinicoes = new javax.swing.JButton();
-        botaoSobre = new javax.swing.JButton();
-        botaoAjuda = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        DesktopPaneCad = new javax.swing.JDesktopPane();
+        DesktopPane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        menuCadastro = new javax.swing.JMenu();
+        CadastroFuncionario = new javax.swing.JMenuItem();
+        cadastroCliente = new javax.swing.JMenuItem();
+        CadastroResidencia = new javax.swing.JMenuItem();
+        cadastroUsuario = new javax.swing.JMenuItem();
+        menuAluguer = new javax.swing.JMenu();
+        menuContrato = new javax.swing.JMenu();
+        menuRelatorio = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        menuDefinicao = new javax.swing.JMenu();
+        menuSobre = new javax.swing.JMenu();
+        menuAjuda = new javax.swing.JMenu();
+        menuSair = new javax.swing.JMenu();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,126 +63,98 @@ public class Tela2Principal extends javax.swing.JFrame {
 
         painelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
-        painelBotoes.setBackground(new java.awt.Color(255, 255, 255));
+        DesktopPane.setBackground(new java.awt.Color(204, 204, 255));
 
-        botaoCadastro.setBackground(new java.awt.Color(255, 255, 255));
-        botaoCadastro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoCadastro.setText("Cadastro");
-        botaoCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCadastroActionPerformed(evt);
-            }
-        });
-
-        botaoContratos.setBackground(new java.awt.Color(255, 255, 255));
-        botaoContratos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoContratos.setText("Contratos");
-        botaoContratos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoContratosActionPerformed(evt);
-            }
-        });
-
-        botaoPagamentos.setBackground(new java.awt.Color(255, 255, 255));
-        botaoPagamentos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoPagamentos.setText("Pagamentos");
-
-        botaoDefinicoes.setBackground(new java.awt.Color(255, 255, 255));
-        botaoDefinicoes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoDefinicoes.setText("Definicoes");
-
-        botaoSobre.setBackground(new java.awt.Color(255, 255, 255));
-        botaoSobre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoSobre.setText("Sobre");
-
-        botaoAjuda.setBackground(new java.awt.Color(255, 255, 255));
-        botaoAjuda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoAjuda.setText("Ajuda");
-
-        javax.swing.GroupLayout painelBotoesLayout = new javax.swing.GroupLayout(painelBotoes);
-        painelBotoes.setLayout(painelBotoesLayout);
-        painelBotoesLayout.setHorizontalGroup(
-            painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(botaoCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botaoContratos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botaoAjuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botaoDefinicoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botaoPagamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botaoSobre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
+        DesktopPane.setLayout(DesktopPaneLayout);
+        DesktopPaneLayout.setHorizontalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1392, Short.MAX_VALUE)
         );
-        painelBotoesLayout.setVerticalGroup(
-            painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelBotoesLayout.createSequentialGroup()
-                .addComponent(botaoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoContratos, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoPagamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaoDefinicoes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaoSobre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7))
-        );
-
-        DesktopPaneCad.setBackground(new java.awt.Color(204, 204, 204));
-        DesktopPaneCad.setForeground(new java.awt.Color(204, 255, 204));
-
-        javax.swing.GroupLayout DesktopPaneCadLayout = new javax.swing.GroupLayout(DesktopPaneCad);
-        DesktopPaneCad.setLayout(DesktopPaneCadLayout);
-        DesktopPaneCadLayout.setHorizontalGroup(
-            DesktopPaneCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
-        );
-        DesktopPaneCadLayout.setVerticalGroup(
-            DesktopPaneCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DesktopPaneCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DesktopPaneCad, javax.swing.GroupLayout.Alignment.TRAILING)
+        DesktopPaneLayout.setVerticalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 754, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
         painelPrincipal.setLayout(painelPrincipalLayout);
         painelPrincipalLayout.setHorizontalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addComponent(painelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(DesktopPane)
         );
         painelPrincipalLayout.setVerticalGroup(
             painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(painelPrincipalLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(77, 77, 77)
+                .addComponent(DesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(painelPrincipal, java.awt.BorderLayout.CENTER);
+        getContentPane().add(painelPrincipal, java.awt.BorderLayout.PAGE_END);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        menuCadastro.setText("Cadastro");
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        CadastroFuncionario.setText("Funcionario");
+        CadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroFuncionarioActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(CadastroFuncionario);
 
-        jMenu3.setText("Ajuda");
-        jMenuBar1.add(jMenu3);
+        cadastroCliente.setText("Cliente");
+        cadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroClienteActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(cadastroCliente);
 
-        jMenu4.setText("Sair");
-        jMenuBar1.add(jMenu4);
+        CadastroResidencia.setText("Residencia");
+        CadastroResidencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroResidenciaActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(CadastroResidencia);
+
+        cadastroUsuario.setText("Usuario");
+        cadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroUsuarioActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(cadastroUsuario);
+
+        jMenuBar1.add(menuCadastro);
+
+        menuAluguer.setText("Aluguer");
+        jMenuBar1.add(menuAluguer);
+
+        menuContrato.setText("Contractos");
+        jMenuBar1.add(menuContrato);
+
+        menuRelatorio.setText("Relatorios");
+
+        jMenuItem6.setText("Pagamentos");
+        menuRelatorio.add(jMenuItem6);
+
+        jMenuItem7.setText("Dividas");
+        menuRelatorio.add(jMenuItem7);
+
+        jMenuBar1.add(menuRelatorio);
+
+        menuDefinicao.setText("Definicao");
+        jMenuBar1.add(menuDefinicao);
+
+        menuSobre.setText("Sobre");
+        jMenuBar1.add(menuSobre);
+
+        menuAjuda.setText("Ajuda");
+        jMenuBar1.add(menuAjuda);
+
+        menuSair.setText("Sair");
+        jMenuBar1.add(menuSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -186,15 +162,22 @@ public class Tela2Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed
-        InternalFrameCadastro internalCad = new InternalFrameCadastro();
-        DesktopPaneCad.add(internalCad);
-        internalCad.setVisible(true);
-    }//GEN-LAST:event_botaoCadastroActionPerformed
-
-    private void botaoContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoContratosActionPerformed
+    private void cadastroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botaoContratosActionPerformed
+    }//GEN-LAST:event_cadastroUsuarioActionPerformed
+
+    private void CadastroResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroResidenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CadastroResidenciaActionPerformed
+
+    private void CadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroFuncionarioActionPerformed
+        
+    }//GEN-LAST:event_CadastroFuncionarioActionPerformed
+
+    private void cadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteActionPerformed
+       DesktopPane.add(cli);
+        cli.setVisible(true);
+    }//GEN-LAST:event_cadastroClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,21 +215,23 @@ public class Tela2Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane DesktopPaneCad;
-    private javax.swing.JButton botaoAjuda;
-    private javax.swing.JButton botaoCadastro;
-    private javax.swing.JButton botaoContratos;
-    private javax.swing.JButton botaoDefinicoes;
-    private javax.swing.JButton botaoPagamentos;
-    private javax.swing.JButton botaoSobre;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuItem CadastroFuncionario;
+    private javax.swing.JMenuItem CadastroResidencia;
+    private javax.swing.JDesktopPane DesktopPane;
+    private javax.swing.JMenuItem cadastroCliente;
+    private javax.swing.JMenuItem cadastroUsuario;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel painelBotoes;
+    private javax.swing.JMenu menuAjuda;
+    private javax.swing.JMenu menuAluguer;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuContrato;
+    private javax.swing.JMenu menuDefinicao;
+    private javax.swing.JMenu menuRelatorio;
+    private javax.swing.JMenu menuSair;
+    private javax.swing.JMenu menuSobre;
     private javax.swing.JPanel painelPrincipal;
     // End of variables declaration//GEN-END:variables
 }

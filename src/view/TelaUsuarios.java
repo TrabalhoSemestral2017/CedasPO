@@ -6,31 +6,40 @@
 package view;
 
 
+import control.FuncionarioDao;
+import tabela.TabelaFuncionario;
 import tabela.TabelaUsuario;
-
 import control.UsuariorDao;
+import model.Funcionario;
+
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import model.Funcionario;
 
 import model.Utilizador;
+import org.hibernate.Session;
 
 /**
  *
  * @author Armano
  */
-public class TelaUtilizador extends javax.swing.JFrame {
+public class TelaUsuarios extends javax.swing.JFrame {
 private Utilizador usuario;
     private List<Utilizador> list;
     private TabelaUsuario modelTable;
   
      UsuariorDao controle=new  UsuariorDao();
+    Funcionario F=new Funcionario();
+    
+    
+    
     
     /**
      * Creates new form TelaUsuarios
      */
-    public TelaUtilizador() {
+    public TelaUsuarios() {
         
         initComponents();
         
@@ -65,17 +74,20 @@ private Utilizador usuario;
         PesaquisartField1 = new javax.swing.JTextField();
         PesquisaUsuario = new javax.swing.JButton();
         RelatorioUsuario = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setText("Nome:");
+        jLabel2.setText("User");
 
-        jLabel3.setText("Senha:");
+        jLabel3.setText("Senha");
 
         jLabel4.setText("Categoria");
 
-        jCboCategoriaUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboCategoriaUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboCategoriaUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -84,8 +96,8 @@ private Utilizador usuario;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel2)
-                .addGap(26, 26, 26)
-                .addComponent(UserField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(UserField1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(26, 26, 26)
@@ -124,14 +136,13 @@ private Utilizador usuario;
         jScrollPane1.setViewportView(jTabelaUsuario);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("Cadastrar Usuário");
+        jLabel1.setText("Cadastrar Usuario");
 
         NovoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/addFunc32.png"))); // NOI18N
-        NovoUsuario.setText("Novo");
+        NovoUsuario.setText("NEW");
 
         DeletarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete_3.png"))); // NOI18N
-        DeletarUsuario.setText("Apagar");
-        DeletarUsuario.setActionCommand("Apagar");
+        DeletarUsuario.setText("Delete");
 
         RefreshUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh-24.png"))); // NOI18N
         RefreshUsuario.setText("Actualizar");
@@ -142,7 +153,7 @@ private Utilizador usuario;
         });
 
         SalvarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Accept-icon32.png"))); // NOI18N
-        SalvarUsuario.setText("Salvar");
+        SalvarUsuario.setText("Seve");
         SalvarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalvarUsuarioActionPerformed(evt);
@@ -151,7 +162,7 @@ private Utilizador usuario;
 
         PesquisaUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pes32.jpg"))); // NOI18N
 
-        RelatorioUsuario.setText("Relatório");
+        RelatorioUsuario.setText("Relatorio");
 
         javax.swing.GroupLayout bontes1Layout = new javax.swing.GroupLayout(bontes1);
         bontes1.setLayout(bontes1Layout);
@@ -190,14 +201,6 @@ private Utilizador usuario;
                 .addContainerGap())
         );
 
-        jButton1.setForeground(new java.awt.Color(255, 153, 153));
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,14 +217,10 @@ private Utilizador usuario;
                         .addGap(30, 30, 30)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(59, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(28, 28, 28))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(32, 32, 32)
-                    .addComponent(bontes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, 947, Short.MAX_VALUE)
                     .addGap(32, 32, 32)))
         );
         layout.setVerticalGroup(
@@ -233,9 +232,7 @@ private Utilizador usuario;
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(73, 73, 73))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(222, 222, 222)
@@ -290,13 +287,9 @@ public void updateTable(){
 
     }//GEN-LAST:event_SalvarUsuarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-
-System.exit(0);
-
+    private void jCboCategoriaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboCategoriaUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jCboCategoriaUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,13 +308,13 @@ System.exit(0);
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaUtilizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaUtilizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaUtilizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaUtilizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -331,7 +324,7 @@ System.exit(0);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaUtilizador().setVisible(true);
+                new TelaUsuarios().setVisible(true);
             }
         });
     }
@@ -347,7 +340,6 @@ System.exit(0);
     private javax.swing.JTextField SenhaField2;
     private javax.swing.JTextField UserField1;
     private javax.swing.JPanel bontes1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCboCategoriaUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -357,4 +349,20 @@ System.exit(0);
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabelaUsuario;
     // End of variables declaration//GEN-END:variables
+
+
+  
+// public void preencherComboboxBairros() {
+//        List<Funcionario> Funcionarios = controle.buscaPorId(ICONIFIED);
+//        jCboCategoriaUsuario.removeAllItems();
+//        jCboCategoriaUsuario.repaint();
+//
+//        jCboCategoriaUsuario.addItem(null);
+//        for (Funcionario f : Funcionarios) {
+//            jCboCategoriaUsuario.addItem(f.getNome());
+//        }
+//
+//    }
+   
 }
+
