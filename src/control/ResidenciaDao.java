@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import util.HibernateUtil;
+import view.Tela1Residencia;
 
 /**
  *
@@ -124,6 +125,18 @@ public class ResidenciaDao {
         return criaSessao().createCriteria(Residencia.class).list();
     }
 
+    public void actualizar(Tela1Residencia re) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void salvar(Tela1Residencia re) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void actualizar(Residencia residencia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
       /**
      *  Busca um Residencia dado seu idResidencia na base de dados
      *
@@ -132,12 +145,7 @@ public class ResidenciaDao {
      * 
      * idResidencia - e um atributo do Residencia que é chave primaria
      */
-    public Residencia buscaPorId(long idResidencia) {
-        return (Residencia) criaSessao().createCriteria(Residencia.class)
-                .add(Restrictions.eq("idResidencia", idResidencia)).uniqueResult();
-    }
+   
 
-    public void actualizar(Residencia residencia) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }

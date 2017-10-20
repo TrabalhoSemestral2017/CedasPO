@@ -5,36 +5,31 @@
  */
 package view;
 
-import control.FuncionarioDao;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import java.util.Date;
 import control.ResidenciaDao;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import model.Funcionario;
 import model.Residencia;
-import tabela.TabelaFuncionario;
 import tabela.TabelaResidencia;
 
 /**
  *
  * @author Armano
  */
-public class TelaResidencia extends javax.swing.JFrame {
-    
-    private static int id = 0;
+public class Tela1Residencia extends javax.swing.JInternalFrame {
+   
+   private static int id = 0;
     private Residencia residencia = new Residencia();
     private List<Residencia> list;
     private TabelaResidencia modelTable = new TabelaResidencia();
     ResidenciaDao controle = new ResidenciaDao();
-
+    
     /**
-     * Creates new form TelaResidencia
+     * Creates new form Residencia
      */
-    public TelaResidencia() {
+    public Tela1Residencia() {
         initComponents();
-       // updateTable();
          jTableCadastro1.setModel(modelTable);
         modelTable.lerTabela();
     }
@@ -67,9 +62,6 @@ public class TelaResidencia extends javax.swing.JFrame {
         LocalizacaoField1 = new javax.swing.JTextField();
         jCboEstadoOcupacao1 = new javax.swing.JComboBox<>();
         jComboBoxEstado = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableCadastro1 = new javax.swing.JTable();
         bontes1 = new javax.swing.JPanel();
         NovoImovel = new javax.swing.JButton();
         DeletarImovel = new javax.swing.JButton();
@@ -78,8 +70,11 @@ public class TelaResidencia extends javax.swing.JFrame {
         PesaquisartField1 = new javax.swing.JTextField();
         pesquisaImovel = new javax.swing.JButton();
         RelatorioImovel = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCadastro1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1052, 721));
 
         jLabel2.setText("Nome");
 
@@ -115,35 +110,39 @@ public class TelaResidencia extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LocalizacaoField1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(blocojComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NomeField1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LocalizacaoField1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboBoxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(tipojComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(blocojComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NomeField1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCboEstadoOcupacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCboEstadoOcupacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(tipojComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -169,15 +168,19 @@ public class TelaResidencia extends javax.swing.JFrame {
                     .addComponent(ValorApagarField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(blocojComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(tipojComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(ValorReabilitacaoField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(tipojComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
+                            .addComponent(ValorReabilitacaoField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(blocojComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -192,27 +195,6 @@ public class TelaResidencia extends javax.swing.JFrame {
                             .addComponent(jCboEstadoOcupacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(28, Short.MAX_VALUE))))
         );
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("Cadastrar Imovel");
-
-        jTableCadastro1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jTableCadastro1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableCadastro1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTableCadastro1);
 
         NovoImovel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/addFunc32.png"))); // NOI18N
         NovoImovel.setText("NEW");
@@ -282,6 +264,27 @@ public class TelaResidencia extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTableCadastro1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jTableCadastro1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCadastro1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableCadastro1);
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setText("Cadastrar Imovel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -289,18 +292,17 @@ public class TelaResidencia extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 911, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(390, 390, 390)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 911, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(354, 354, 354)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,58 +311,43 @@ public class TelaResidencia extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(26, 26, 26)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addGap(18, 18, 18)
                 .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SalvarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarImovelActionPerformed
-        // TODO add your handling code here:
-        
-        
+    private void DeletarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletarImovelActionPerformed
+        // TODO add your handling code here;
+
         try {
-  
-            String nome = this.NomeField1.getText();
-            String estado = this.jComboBoxEstado.getSelectedItem() + "";
 
-//            String nome = this.NomeField1.getText();
-            String localizacao = this.LocalizacaoField1.getText();
-            String valorArendamento = this.ValorApagarField2.getText();
-            String valorReabilitacaoMax = this.ValorReabilitacaoField4.getText();
+            TabelaResidencia tb = new TabelaResidencia(list);
 
-            String bloco = this.blocojComboBox1.getSelectedItem() + "";
-            String Tipo = this.tipojComboBox2.getSelectedItem() + "";
-            String estadoOcupacao = this.jCboEstadoOcupacao1.getSelectedItem() + "";
-
-            Residencia residencia = new Residencia(nome, bloco, Tipo, estado, valorArendamento, valorReabilitacaoMax, localizacao, estadoOcupacao, new Date());
-
-            controle.salvar(residencia);
-            updateTable();
-            //  desabilitar();
-            JOptionPane.showMessageDialog(null, "Funcionario salvo com sucesso");
-
-                  limparCampos();
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "erro de insersao : " + erro);
+            controle.removerResidencia(id);
+            modelTable.lerTabela();
+            //
+            //  controle.actualizar(residencia);
+            //   updateTable();
+            JOptionPane.showMessageDialog(null, "Removido com sucesso!!!!!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao remover" + ex);
         }
-        modelTable.lerTabela();
-    }//GEN-LAST:event_SalvarImovelActionPerformed
+    }//GEN-LAST:event_DeletarImovelActionPerformed
 
     private void RefreshImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshImovelActionPerformed
         // TODO add your handling code here:
-        
-          
+
         try {
-  
+
             String nome = this.NomeField1.getText();
             String estado = this.jComboBoxEstado.getSelectedItem() + "";
 
-//            String nome = this.NomeField1.getText();
+            //            String nome = this.NomeField1.getText();
             String localizacao = this.LocalizacaoField1.getText();
             String valorArendamento = this.ValorApagarField2.getText();
             String valorReabilitacaoMax = this.ValorReabilitacaoField4.getText();
@@ -376,39 +363,51 @@ public class TelaResidencia extends javax.swing.JFrame {
             //  desabilitar();
             JOptionPane.showMessageDialog(null, "Funcionario salvo com sucesso");
 
-                 limparCampos();
+            limparCampos();
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "erro de insersao : " + erro);
         }
     }//GEN-LAST:event_RefreshImovelActionPerformed
 
-    private void DeletarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletarImovelActionPerformed
-        // TODO add your handling code here;
-        
+    private void SalvarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarImovelActionPerformed
+        // TODO add your handling code here:
+
         try {
 
-            TabelaResidencia tb = new TabelaResidencia(list);
+            String nome = this.NomeField1.getText();
+            String estado = this.jComboBoxEstado.getSelectedItem() + "";
 
-            controle.removerResidencia(id);
-            modelTable.lerTabela();
-//  
-            //  controle.actualizar(residencia);
-            //   updateTable();
-            JOptionPane.showMessageDialog(null, "Removido com sucesso!!!!!");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover" + ex);
+            //            String nome = this.NomeField1.getText();
+            String localizacao = this.LocalizacaoField1.getText();
+            String valorArendamento = this.ValorApagarField2.getText();
+            String valorReabilitacaoMax = this.ValorReabilitacaoField4.getText();
+
+            String bloco = this.blocojComboBox1.getSelectedItem() + "";
+            String Tipo = this.tipojComboBox2.getSelectedItem() + "";
+            String estadoOcupacao = this.jCboEstadoOcupacao1.getSelectedItem() + "";
+
+            Residencia residencia = new Residencia(nome, bloco, Tipo, estado, valorArendamento, valorReabilitacaoMax, localizacao, estadoOcupacao, new Date());
+
+            controle.salvar(residencia);
+            updateTable();
+            //  desabilitar();
+            JOptionPane.showMessageDialog(null, "Funcionario salvo com sucesso");
+
+            limparCampos();
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "erro de insersao : " + erro);
         }
-    }//GEN-LAST:event_DeletarImovelActionPerformed
+        modelTable.lerTabela();
+    }//GEN-LAST:event_SalvarImovelActionPerformed
 
     private void jTableCadastro1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCadastro1MouseClicked
         // TODO add your handling code here:
-          
-//       
+
+        //
 
         this.residencia = modelTable.mouseclick(jTableCadastro1.getSelectedRow());
         id = residencia.getIdResidencia();
-        
-        
+
         NomeField1.setText(this.residencia.getNome());
         jComboBoxEstado.setSelectedItem(this.residencia.getEstado());
         LocalizacaoField1.setText(this.residencia.getLocalizacao());
@@ -419,9 +418,23 @@ public class TelaResidencia extends javax.swing.JFrame {
         tipojComboBox2.setSelectedItem(this.residencia.getTipo());
         jCboEstadoOcupacao1.setSelectedItem(this.residencia.getEstadoOucupado());
 
-        
-        
     }//GEN-LAST:event_jTableCadastro1MouseClicked
+public void limparCampos() {
+
+        
+        NomeField1.setText("");
+        jComboBoxEstado.setSelectedIndex(-1);
+        LocalizacaoField1.setText("");
+        ValorApagarField2.setText("");
+        ValorReabilitacaoField4.setText("");
+
+        blocojComboBox1.setSelectedIndex(-1);
+        tipojComboBox2.setSelectedIndex(-1);
+        jCboEstadoOcupacao1.setSelectedIndex(-1);
+        
+        
+    }
+                                          
 public void updateTable() {
         this.list = controle.findAll();
 //        modelTable ;
@@ -443,7 +456,7 @@ public void updateTable() {
         jTableCadastro1.getColumnModel().getColumn(6).setResizable(false);
         jTableCadastro1.getColumnModel().getColumn(7).setPreferredWidth(200);
         jTableCadastro1.getColumnModel().getColumn(7).setResizable(false);
-        jTableCadastro1.getColumnModel().getColumn(8).setPreferredWidth(200);
+         jTableCadastro1.getColumnModel().getColumn(8).setPreferredWidth(200);
         jTableCadastro1.getColumnModel().getColumn(8).setResizable(false);
         jTableCadastro1.getColumnModel().getColumn(9).setPreferredWidth(200);
         jTableCadastro1.getColumnModel().getColumn(9).setResizable(false);
@@ -453,45 +466,6 @@ public void updateTable() {
         jTableCadastro1.setAutoResizeMode(jTableCadastro1.AUTO_RESIZE_OFF);
         jTableCadastro1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaResidencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaResidencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaResidencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaResidencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaResidencia().setVisible(true);
-                int DISPOSE_ON_CLOSE1 = JFrame.DISPOSE_ON_CLOSE;
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DeletarImovel;
     private javax.swing.JTextField LocalizacaoField1;
@@ -524,23 +498,4 @@ public void updateTable() {
     private javax.swing.JButton pesquisaImovel;
     private javax.swing.JComboBox<String> tipojComboBox2;
     // End of variables declaration//GEN-END:variables
-
-    
-     public void limparCampos() {
-
-        
-        NomeField1.setText("");
-        jComboBoxEstado.setSelectedIndex(-1);
-        LocalizacaoField1.setText("");
-        ValorApagarField2.setText("");
-        ValorReabilitacaoField4.setText("");
-
-        blocojComboBox1.setSelectedIndex(-1);
-        tipojComboBox2.setSelectedIndex(-1);
-        jCboEstadoOcupacao1.setSelectedIndex(-1);
-        
-        
-    }
-
-
 }
