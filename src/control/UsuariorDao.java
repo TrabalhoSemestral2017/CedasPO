@@ -71,21 +71,15 @@ public class UsuariorDao {
   public Object actualizar(int id,Utilizador obj){
         try{  
           Session sessao  =HibernateUtil.getSessionFactory().openSession();
-//             Utilizador  r = (Residencia)  sessao.get(Residencia.class,id);
-//             sessao.beginTransaction();
-//             
-//               r.setNome(obj.getNome());
-//               r.setEstado(obj.getEstado());
-//               r.setEstadoOucupado(obj.getEstadoOucupado());
-//               r.setBloco(obj.getBloco());
-//               r.setLocalizacao(obj.getLocalizacao());
-//               r.setValorReabilitacaoMax(obj.getValorReabilitacaoMax());
-//               r.setValorArendamento(obj.getValorArendamento());
-//               r.setTipo(obj.getTipo());
-//               
+             Utilizador  r = (Utilizador)  sessao.get(Utilizador.class,id);
+             sessao.beginTransaction();
+             
+               r.setPassword(obj.getPassword());
+               r.setUsername(obj.getUsername());
+                              
                
-            // criaSessao().getTransaction().begin();
-//             sessao.saveOrUpdate(r);
+             criaSessao().getTransaction().begin();
+             sessao.saveOrUpdate(r);
               sessao.getTransaction().commit();
               sessao.close();
         return obj;
@@ -142,8 +136,13 @@ public class UsuariorDao {
                 .add(Restrictions.eq("idUtilizador", idUtilizador)).uniqueResult();
     }
 
+ 
+    }
+
+  
+
    
     
    
     
-}
+

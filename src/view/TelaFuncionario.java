@@ -12,7 +12,6 @@ import java.util.List;
 import javafx.scene.chart.PieChart.Data;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-
 import model.Funcionario;
 import org.hibernate.Session;
 import util.HibernateUtil;
@@ -40,7 +39,8 @@ public class TelaFuncionario extends javax.swing.JFrame {
         // updateTable();
 //        isFieldEmpty();
         // Validacoes();
-
+n.add(jRdoFemenino);
+n.add(jRdoMasculino);
     }
 
     /**
@@ -52,6 +52,8 @@ public class TelaFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        n = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
         bontes1 = new javax.swing.JPanel();
         jButNovoFuncionario = new javax.swing.JButton();
         jButDeletarFuncionario = new javax.swing.JButton();
@@ -77,11 +79,15 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFuncionario = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(102, 153, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        bontes1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButNovoFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         jButNovoFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/addFunc32.png"))); // NOI18N
         jButNovoFuncionario.setText("NEW");
         jButNovoFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +96,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
 
+        jButDeletarFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         jButDeletarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete_3.png"))); // NOI18N
         jButDeletarFuncionario.setText("Delete");
         jButDeletarFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +105,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
 
+        jButRefreshFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         jButRefreshFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh-24.png"))); // NOI18N
         jButRefreshFuncionario.setText("Actualizar");
         jButRefreshFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +114,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
 
+        jButSalvarFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         jButSalvarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Accept-icon32.png"))); // NOI18N
         jButSalvarFuncionario.setText("Seve");
         jButSalvarFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +142,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
 
+        jButpesaquisaFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         jButpesaquisaFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pes32.jpg"))); // NOI18N
         jButpesaquisaFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +150,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
 
+        jButRelatorioFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         jButRelatorioFuncionario.setText("Relatorio");
 
         javax.swing.GroupLayout bontes1Layout = new javax.swing.GroupLayout(bontes1);
@@ -179,6 +190,8 @@ public class TelaFuncionario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel2.setText("Nome");
 
         jLabel3.setText("Apelido");
@@ -196,6 +209,8 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jRdoMasculino.setText("M");
 
         jRdoFemenino.setText("F");
+
+        DataNacimentoField1.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -261,6 +276,8 @@ public class TelaFuncionario extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
         jTableFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -280,42 +297,51 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setText("Cadastro de Funcionarios");
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 967, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 957, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(203, 203, 203)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, 947, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(30, 30, 30)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addContainerGap(10, Short.MAX_VALUE)))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 541, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(41, 41, 41)
+                    .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, 947, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(323, 323, 323)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -395,7 +421,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             Funcionario funcionario = new Funcionario(ICONIFIED, nome, apelido, nacionalidade, genero, categoria, datanascimento, new Date());
 
             controle.salvar(funcionario);
-            //updateTable();
+            updateTable();
             //  desabilitar();
             JOptionPane.showMessageDialog(null, "Funcionario salvo com sucesso");
 
@@ -455,7 +481,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             modelTable.lerTabela();
 //  
             //  controle.actualizar(funcionario);
-            //   updateTable();
+               updateTable();
             JOptionPane.showMessageDialog(null, "Removido com sucesso!!!!!");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro ao remover" + ex);
@@ -552,7 +578,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButSalvarFuncionario;
     private javax.swing.JButton jButpesaquisaFuncionario;
     private javax.swing.JComboBox<String> jCboCategoria;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -560,11 +585,13 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRdoFemenino;
     private javax.swing.JRadioButton jRdoMasculino;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableFuncionario;
+    private javax.swing.ButtonGroup n;
     // End of variables declaration//GEN-END:variables
 
     public void desabilitar() {
@@ -600,36 +627,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
     }
 
-    public void Validacoes() {
-        validarNome();
-        validarApelido();
-        validarNacionalidade();
-
-    }
-
-    public boolean validarNome() {
-        if (NomeField1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "somente texto");
-            return false;
-        }
-        return false;
-    }
-
-    public boolean validarApelido() {
-        if (ApelidoField2.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "somente texto");
-            return false;
-        }
-        return false;
-    }
-
-    public boolean validarNacionalidade() {
-        if (NacionalidadeField1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "somente texto");
-            return false;
-        }
-        return false;
-    }
+    
 
 
     private void fillFields() {
@@ -644,13 +642,8 @@ public class TelaFuncionario extends javax.swing.JFrame {
         // jCboCategoria.getItemAt(this.funcionario.setCategoria());
     }
     
-    public void CarregarTabela() {
-      
+   
     
-    
-    
-    
-    }
 
 
     

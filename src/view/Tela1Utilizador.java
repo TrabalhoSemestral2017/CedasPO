@@ -6,19 +6,36 @@
 
 package view;
 
+import control.UsuariorDao;
+import static java.awt.Frame.ICONIFIED;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import model.Utilizador;
+import tabela.TabelaUsuario;
 
 /**
  *
  * @author Armano
  */
 public class Tela1Utilizador extends javax.swing.JInternalFrame {
-
+ 
+    private static int id = 0;
+    private Utilizador utilizador = new Utilizador();
+    private List<Utilizador> list;
+    private TabelaUsuario modelTable;
+    UsuariorDao controle=new  UsuariorDao();
+   // private TabelaUsuario modelTable = new TabelaUsuario();
+    Utilizador Uti=new Utilizador();
+    
     /** Creates new form Tela1Utilizador */
     public Tela1Utilizador() {
         initComponents();
+        updateTable();
+        limparCampos();
+        jTabelaUsuario.setModel(modelTable);
+        modelTable.lerTabela();
     }
 
     /** This method is called from within the constructor to
@@ -74,8 +91,8 @@ public class Tela1Utilizador extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(UserField1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(UserField1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel3)
                 .addGap(26, 26, 26)
                 .addComponent(SenhaField2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -100,10 +117,20 @@ public class Tela1Utilizador extends javax.swing.JInternalFrame {
         );
 
         NovoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/addFunc32.png"))); // NOI18N
-        NovoUsuario.setText("NEW");
+        NovoUsuario.setText("Novo");
+        NovoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovoUsuarioActionPerformed(evt);
+            }
+        });
 
         DeletarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete_3.png"))); // NOI18N
-        DeletarUsuario.setText("Delete");
+        DeletarUsuario.setText("Deletar");
+        DeletarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeletarUsuarioActionPerformed(evt);
+            }
+        });
 
         RefreshUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refresh-24.png"))); // NOI18N
         RefreshUsuario.setText("Actualizar");
@@ -114,7 +141,7 @@ public class Tela1Utilizador extends javax.swing.JInternalFrame {
         });
 
         SalvarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Accept-icon32.png"))); // NOI18N
-        SalvarUsuario.setText("Seve");
+        SalvarUsuario.setText("Gravar");
         SalvarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalvarUsuarioActionPerformed(evt);
@@ -133,8 +160,8 @@ public class Tela1Utilizador extends javax.swing.JInternalFrame {
                 .addContainerGap(59, Short.MAX_VALUE)
                 .addComponent(NovoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(SalvarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addComponent(SalvarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(RefreshUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(DeletarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,15 +191,20 @@ public class Tela1Utilizador extends javax.swing.JInternalFrame {
 
         jTabelaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "ID", "User", "Senha", "Categoria", "Data do Registo"
+
             }
         ));
+        jTabelaUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabelaUsuarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTabelaUsuario);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,7 +240,7 @@ public class Tela1Utilizador extends javax.swing.JInternalFrame {
                 .addComponent(bontes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,26 +255,87 @@ public class Tela1Utilizador extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_RefreshUsuarioActionPerformed
 
     private void SalvarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarUsuarioActionPerformed
-        // TODO add your handling code here:
-//        try {
-//
-//            String username = this.UserField1.getText();
-//            String password = this.SenhaField2.getText();
-//            //  String categoria = this..getText();
-//            String Categoria = this.jCboCategoriaUsuario.getSelectedItem() + "";
-//            // String funcionario=this.Funcionario.getText();
-//            int ICONIFIED;
-//
-//            Utilizador u=new Utilizador(ICONIFIED, "Tania", Categoria, username, password,new Date());
-//            // clienteDao.salvar(cliente);
-//            controle.salvar(u);
-//
-//            JOptionPane.showMessageDialog(null, "Usuario gravado com sucesso");
-//        } catch (Exception erro) {
-//            JOptionPane.showMessageDialog(null, "Erro de insersao : " + erro);
-//        }
+ try {
+          
+    
+            String username = this.UserField1.getText();
+            String password = this.SenhaField2.getText();
+
+            String Categoria = this.jCboCategoriaUsuario.getSelectedItem() + "";
+
+            Utilizador u = new Utilizador(ICONIFIED, Categoria, username, password, new Date());
+
+            controle.salvar(u);
+            modelTable.lerTabela();
+            limparCampos();
+            JOptionPane.showMessageDialog(null, "Usuario gravado com sucesso");
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Erro de insersao : " + erro);
+        }
     }//GEN-LAST:event_SalvarUsuarioActionPerformed
 
+    private void NovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NovoUsuarioActionPerformed
+
+    private void DeletarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletarUsuarioActionPerformed
+        // TODO add your handling code here:
+        
+         try {
+
+            TabelaUsuario tb = new TabelaUsuario(list);
+
+            controle.removerUtilizador(id);
+            modelTable.lerTabela();
+//  
+            //  controle.actualizar(funcionario);
+            limparCampos();
+               updateTable();
+            JOptionPane.showMessageDialog(null, "Removido com sucesso!!!!!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao remover" + ex);
+        }
+    }//GEN-LAST:event_DeletarUsuarioActionPerformed
+ public void limparCampos() {
+
+        UserField1.setText("");
+        SenhaField2.setText("");
+        jCboCategoriaUsuario.setSelectedIndex(-1);
+
+    }
+    private void jTabelaUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaUsuarioMouseClicked
+        // TODO add your handling code here:
+        
+        
+      //  this.utilizador = modelTable.mouseclick(jTabelaUsuario.getSelectedRow());
+        this.utilizador = this.list.get(jTabelaUsuario.getSelectedRow());
+        id = utilizador.getIdutilizador();
+        UserField1.setText(this.utilizador.getUsername());
+        SenhaField2.setText(this.utilizador.getPassword());
+        
+        jCboCategoriaUsuario.setSelectedItem(this.utilizador.getCategoria());
+        
+    }//GEN-LAST:event_jTabelaUsuarioMouseClicked
+public void updateTable(){
+        this.list = controle.findAll();
+        modelTable = new TabelaUsuario(list);
+        jTabelaUsuario.setModel(modelTable);
+
+       jTabelaUsuario.getColumnModel().getColumn(0).setPreferredWidth(300);
+       jTabelaUsuario.getColumnModel().getColumn(0).setResizable(false);
+       jTabelaUsuario.getColumnModel().getColumn(1).setPreferredWidth(150);
+       jTabelaUsuario.getColumnModel().getColumn(1).setResizable(false);
+       jTabelaUsuario.getColumnModel().getColumn(2).setPreferredWidth(150);
+       jTabelaUsuario.getColumnModel().getColumn(2).setResizable(false);
+       jTabelaUsuario.getColumnModel().getColumn(3).setPreferredWidth(200);
+       jTabelaUsuario.getColumnModel().getColumn(3).setResizable(false);
+       jTabelaUsuario.getColumnModel().getColumn(4).setPreferredWidth(200);
+       jTabelaUsuario.getColumnModel().getColumn(4).setResizable(false);
+       jTabelaUsuario.getTableHeader().setReorderingAllowed(false);
+       jTabelaUsuario.setAutoResizeMode( jTabelaUsuario.AUTO_RESIZE_OFF);
+       jTabelaUsuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DeletarUsuario;

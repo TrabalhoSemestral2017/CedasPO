@@ -315,17 +315,17 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="NovoImovel" min="-2" pref="111" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="SalvarImovel" min="-2" pref="96" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="RefreshImovel" min="-2" pref="111" max="-2" attributes="0"/>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                  <Component id="SalvarImovel" min="-2" pref="110" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="DeletarImovel" min="-2" pref="111" max="-2" attributes="0"/>
+                  <Component id="RefreshImovel" min="-2" pref="111" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="DeletarImovel" min="-2" pref="111" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="RelatorioImovel" min="-2" pref="111" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="PesaquisartField1" min="-2" pref="114" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="pesquisaImovel" min="-2" pref="49" max="-2" attributes="0"/>
@@ -359,7 +359,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/addFunc32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="NEW"/>
+            <Property name="text" type="java.lang.String" value="Novo"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="DeletarImovel">
@@ -367,7 +367,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/Delete_3.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Delete"/>
+            <Property name="text" type="java.lang.String" value="Deletar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeletarImovelActionPerformed"/>
@@ -389,7 +389,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/Accept-icon32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Seve"/>
+            <Property name="text" type="java.lang.String" value="Gravar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalvarImovelActionPerformed"/>

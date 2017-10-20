@@ -161,7 +161,7 @@ public class Tela1Fucionario extends javax.swing.JInternalFrame {
         );
 
         jButNovoFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/addFunc32.png"))); // NOI18N
-        jButNovoFuncionario.setText("NEW");
+        jButNovoFuncionario.setText("Novo");
         jButNovoFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButNovoFuncionarioActionPerformed(evt);
@@ -169,7 +169,7 @@ public class Tela1Fucionario extends javax.swing.JInternalFrame {
         });
 
         jButDeletarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete_3.png"))); // NOI18N
-        jButDeletarFuncionario.setText("Delete");
+        jButDeletarFuncionario.setText("Deletar");
         jButDeletarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButDeletarFuncionarioActionPerformed(evt);
@@ -185,7 +185,7 @@ public class Tela1Fucionario extends javax.swing.JInternalFrame {
         });
 
         jButSalvarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Accept-icon32.png"))); // NOI18N
-        jButSalvarFuncionario.setText("Seve");
+        jButSalvarFuncionario.setText("Gravar");
         jButSalvarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButSalvarFuncionarioActionPerformed(evt);
@@ -228,8 +228,8 @@ public class Tela1Fucionario extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButNovoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jButSalvarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addComponent(jButSalvarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButRefreshFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jButDeletarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)

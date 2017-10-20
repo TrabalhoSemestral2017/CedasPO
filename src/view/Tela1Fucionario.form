@@ -230,8 +230,8 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButNovoFuncionario" min="-2" pref="111" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jButSalvarFuncionario" min="-2" pref="96" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jButSalvarFuncionario" min="-2" pref="110" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButRefreshFuncionario" min="-2" pref="111" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="jButDeletarFuncionario" min="-2" pref="111" max="-2" attributes="0"/>
@@ -271,7 +271,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/addFunc32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="NEW"/>
+            <Property name="text" type="java.lang.String" value="Novo"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButNovoFuncionarioActionPerformed"/>
@@ -282,7 +282,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/Delete_3.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Delete"/>
+            <Property name="text" type="java.lang.String" value="Deletar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButDeletarFuncionarioActionPerformed"/>
@@ -304,7 +304,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/Accept-icon32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Seve"/>
+            <Property name="text" type="java.lang.String" value="Gravar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButSalvarFuncionarioActionPerformed"/>

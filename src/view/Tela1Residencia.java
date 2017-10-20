@@ -197,10 +197,10 @@ public class Tela1Residencia extends javax.swing.JInternalFrame {
         );
 
         NovoImovel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/addFunc32.png"))); // NOI18N
-        NovoImovel.setText("NEW");
+        NovoImovel.setText("Novo");
 
         DeletarImovel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete_3.png"))); // NOI18N
-        DeletarImovel.setText("Delete");
+        DeletarImovel.setText("Deletar");
         DeletarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeletarImovelActionPerformed(evt);
@@ -216,7 +216,7 @@ public class Tela1Residencia extends javax.swing.JInternalFrame {
         });
 
         SalvarImovel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Accept-icon32.png"))); // NOI18N
-        SalvarImovel.setText("Seve");
+        SalvarImovel.setText("Gravar");
         SalvarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalvarImovelActionPerformed(evt);
@@ -232,17 +232,17 @@ public class Tela1Residencia extends javax.swing.JInternalFrame {
         bontes1Layout.setHorizontalGroup(
             bontes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bontes1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
                 .addComponent(NovoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(SalvarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(RefreshImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(SalvarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(DeletarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RefreshImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
+                .addComponent(DeletarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(RelatorioImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(31, 31, 31)
                 .addComponent(PesaquisartField1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pesquisaImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)

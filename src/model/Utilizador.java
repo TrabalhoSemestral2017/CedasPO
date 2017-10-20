@@ -26,7 +26,7 @@ public class Utilizador  implements java.io.Serializable {
 
 
      private int idutilizador;
-     private Funcionario funcionario;
+    // private Funcionario funcionario;
      private String Categoria;
      private String username;
      private String password;
@@ -39,7 +39,7 @@ public class Utilizador  implements java.io.Serializable {
 	
     public Utilizador(int idutilizador, Funcionario funcionario) {
         this.idutilizador = idutilizador;
-        this.funcionario = funcionario;
+       // this.funcionario = funcionario;
     }
 
     public Utilizador(int idutilizador,  String Categoria, String username, String password, Date data) {
@@ -51,17 +51,8 @@ public class Utilizador  implements java.io.Serializable {
         this.data = data;
     }
 
-    public Utilizador(int ICONIFIED, String tania, String Categoria, String username, String password, Date date) {
-   this.idutilizador = idutilizador;
-      //  this.funcionario = funcionario;
-        this.Categoria = Categoria;
-        this.username = username;
-        this.password = password;
-        this.data = data;
-    }
-
- 
     
+
    
      @Id 
 @GeneratedValue
@@ -77,13 +68,13 @@ public class Utilizador  implements java.io.Serializable {
 
 //@ManyToOne(fetch=FetchType.LAZY)
 //    @JoinColumn(name="funcionario_idfuncionario")
-    public Funcionario getFuncionario() {
-        return this.funcionario;
-    }
-    
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
+//    public Funcionario getFuncionario() {
+//        return this.funcionario;
+//    }
+//    
+//    public void setFuncionario(Funcionario funcionario) {
+//        this.funcionario = funcionario;
+//    }
 
     
     @Column(name="username", length=45)

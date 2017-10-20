@@ -18,10 +18,10 @@ import util.HibernateUtil;
  * @author Armano
  */
 public class TabelaUsuario  extends AbstractTableModel{
-    private static final int NR_Colunas = 6;
-    private static final String[] colunasNomes = {"Nome" ," funcionario", "ID    ", "Apelido ", "categoria","Data Registo"};
+    private static final int NR_Colunas = 5;
+    private static final String[] colunasNomes = {"Nome" , "ID   ",  "categoria","Data Registo"};
     private static List<Utilizador> list;
-    private static Class<?>[] colunaTipos =  { String.class, String.class, String.class,String.class, String.class,String.class};
+    private static Class<?>[] colunaTipos =  {  String.class, String.class, String.class,String.class};
 
    public TabelaUsuario(List<Utilizador> list) {
         TabelaUsuario.list = list;
@@ -45,15 +45,15 @@ public class TabelaUsuario  extends AbstractTableModel{
         return NR_Colunas;
     }
 
-    @Override
-    public String getColumnName(int column) {
-        return colunasNomes[column];
-    }
+//    @Override
+//    public String getColumnName(int column) {
+//        return colunasNomes[column];
+//    }
 
-    @Override
-    public Class<?> getColumnClass(int coluna) {
-        return colunaTipos[coluna];
-    }
+//    @Override
+//    public Class<?> getColumnClass(int coluna) {
+//        return colunaTipos[coluna];
+//    }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -61,27 +61,25 @@ public class TabelaUsuario  extends AbstractTableModel{
         switch (columnIndex) {
             case 1:
                 return f.getIdutilizador();
-            case 2:
-                return f.getUsername();
-            case 3:
-                return f.getPassword();
-            case 4:
-                return f.getCategoria();
-            case 5:
-                return f.getData();
             case 0:
-                return f.getFuncionario();
-            
+                return f.getUsername();
+            case 2:
+                return f.getPassword();
+            case 3:
+                return f.getCategoria();
+            case 4:
+                return f.getData();
+           
           
         }
         return null;
     }
     
-//     public void lerTabela(){
-//       list.clear();
-//       Session  sessao=HibernateUtil.getSessionFactory().openSession();
-//      sessao.beginTransaction();
-//      list.addAll(sessao.createQuery("SELECT f FROM Funcionario f").list());
-//       fireTableRowsInserted(list.size()-1, list.size()-1);
-//   }   
+     public void lerTabela(){
+       list.clear();
+       Session  sessao=HibernateUtil.getSessionFactory().openSession();
+      sessao.beginTransaction();
+      list.addAll(sessao.createQuery("SELECT f FROM  Utilizador f").list());
+       fireTableRowsInserted(list.size()-1, list.size()-1);
+   }   
 }
