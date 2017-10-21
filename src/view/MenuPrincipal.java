@@ -5,21 +5,19 @@
  */
 package view;
 
-
-
 /**
  *
  * @author Armano
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    Tela1Fucionario fo=new Tela1Fucionario();
-    Tela1Residencia re=new Tela1Residencia();
-    Tela1Cliente Cl=new Tela1Cliente();
-    Tela1Aluguer gg=new Tela1Aluguer();
-    Tela1Utilizador ug=new Tela1Utilizador();
-    InternalFrameCliente rd=new InternalFrameCliente ();
-    
+    Tela1Fucionario fo = new Tela1Fucionario();
+    Tela1Residencia re = new Tela1Residencia();
+    Tela1Cliente Cl = new Tela1Cliente();
+    Tela1Aluguer gg = new Tela1Aluguer();
+    Tela1Utilizador ug = new Tela1Utilizador();
+    Tela1Cliente rd = new Tela1Cliente();
+
     /**
      * Creates new form MenuPrincipal
      */
@@ -75,11 +73,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1052, Short.MAX_VALUE)
+            .addGap(0, 1060, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGap(0, 710, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
@@ -182,7 +180,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1030, 30));
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1060, 30));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,24 +189,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1052, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(193, 193, 193))
+                .addGap(165, 165, 165))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(219, 219, 219)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         jMenu4.setText("Cadastro");
@@ -296,9 +295,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -307,7 +304,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jButtonFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuncionariosActionPerformed
         // TODO add your handling code here:
 //        Funcionario Fu= new Funcionario();
-       jDesktopPane1.add(fo);
+        jDesktopPane1.add(fo);
         fo.setVisible(true);
         re.setVisible(false);
         ug.setVisible(false);
@@ -323,34 +320,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ug.setVisible(false);
         rd.setVisible(false);
         fo.setVisible(false);
-        
+
     }//GEN-LAST:event_jButtonAluguerActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-     
+
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-       // TelaFuncionario dd=new TelaFuncionario();
-        
+        // TelaFuncionario dd=new TelaFuncionario();
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-    
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-     
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
-     
+
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -358,12 +355,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jButtonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendasActionPerformed
-      
+
     }//GEN-LAST:event_jButtonVendasActionPerformed
 
     private void jButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClientesActionPerformed
         // TODO add your handling code here:
-       jDesktopPane1.add(rd);
+        jDesktopPane1.add(rd);
         rd.setVisible(true);
         re.setVisible(false);
         ug.setVisible(false);
@@ -373,10 +370,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButtonResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResidenciaActionPerformed
         // TODO add your handling code here:
-       // Tela1Residencia rer=new Tela1Residencia();
+        // Tela1Residencia rer=new Tela1Residencia();
         jDesktopPane1.add(re);
         re.setVisible(true);
-       fo.setVisible(false);
+        fo.setVisible(false);
         ug.setVisible(false);
         rd.setVisible(false);
         gg.setVisible(false);
@@ -387,19 +384,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jDesktopPane1.add(ug);
         ug.setVisible(true);
         re.setVisible(false);
-       fo.setVisible(false);
+        fo.setVisible(false);
         rd.setVisible(false);
         gg.setVisible(false);
-       
+
     }//GEN-LAST:event_jButtonUtilizadorActionPerformed
-public void close(){
+    public void close() {
 
- re.setVisible(false);
- ug.setVisible(false);
- rd.setVisible(false);
- gg.setVisible(false);
+        re.setVisible(false);
+        ug.setVisible(false);
+        rd.setVisible(false);
+        gg.setVisible(false);
 
-}
+    }
+
     /**
      * @param args the command line arguments
      */

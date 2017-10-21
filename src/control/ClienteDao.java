@@ -8,6 +8,7 @@ package control;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Cliente;
+import model.Funcionario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -60,17 +61,31 @@ public class ClienteDao {
      * caso contrario retorna null
      * obj - Um objecto qualquer que represente uma tabela na base de dados
      */
-    public Object actualizar(Cliente obj){
-        try{
-             criaSessao().getTransaction().begin();
-             criaSessao().update(obj);
-             criaSessao().getTransaction().commit();
+    public Object actualizar(int id,Cliente obj){
+        try{  
+          Session sessao  =HibernateUtil.getSessionFactory().openSession();
+             Cliente f = (Cliente)  sessao.get(Cliente.class,id);
+             sessao.beginTransaction();
+             
+            f.setNome(obj.getNome());
+            f.setContacto(obj.getContacto());
+            f.setContactoEmerg(obj.getContactoEmerg());
+            f.setGenero(obj.getGenero());
+            f.setDataNascimento(obj.getDataNascimento());
+            f.setNumero(obj.getNumero());
+            f.setResidencia(obj.getResidencia());
+            f.setTipoDecumentoIdent(obj.getTipoDecumentoIdent());
+            f.setNacionalidade(obj.getNacionalidade());
+            // criaSessao().getTransaction().begin();
+             sessao.saveOrUpdate(f);
+              sessao.getTransaction().commit();
+              sessao.close();
         return obj;
         
         }catch(Throwable ex){
               criaSessao().getTransaction().rollback();  // Em caso da transacao correr mal, todas as operacoes sao canceladas
         } finally {
-            criaSessao().close(); // Fecha a sessao no final das operacoes
+           // criaSessao().close(); // Fecha a sessao no final das operacoes
         }
         return null;
     }

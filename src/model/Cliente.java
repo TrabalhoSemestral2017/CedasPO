@@ -25,15 +25,16 @@ public class Cliente  implements java.io.Serializable {
 
      private int idCliente;
      private String nome;
-     private String apelido;
+  //   private String apelido;
      private String genero;
      private String nacionalidade;
      private String residencia;
      private String tipoDecumentoIdent;
-     private String nomero;
-     private Date validade;
+     private String numero;
+     private Date DataNascimento;
      private String contacto;
      private String contactoEmerg;
+     private Date DataRegisto;
      
 
     public Cliente() {
@@ -43,20 +44,26 @@ public class Cliente  implements java.io.Serializable {
     public Cliente(int idCliente) {
         this.idCliente = idCliente;
     }
-    public Cliente(int idCliente, String nome, String apelido, String genero, String nacionalidade, String residencia, String tipoDecumentoIdent, String nomero, Date validade, String contacto, String contactoEmerg) {
-       this.idCliente = idCliente;
-       this.nome = nome;
-       this.apelido = apelido;
-       this.genero = genero;
-       this.nacionalidade = nacionalidade;
-       this.residencia = residencia;
-       this.tipoDecumentoIdent = tipoDecumentoIdent;
-       this.nomero = nomero;
-       this.validade = validade;
-       this.contacto = contacto;
-       this.contactoEmerg = contactoEmerg;
-       
+
+    public Cliente(String nome, String genero, String nacionalidade, String residencia, String tipoDecumentoIdent, String numero, Date DataNascimento, String contacto, String contactoEmerg, Date DataRegisto) {
+        this.nome = nome;
+        this.genero = genero;
+        this.nacionalidade = nacionalidade;
+        this.residencia = residencia;
+        this.tipoDecumentoIdent = tipoDecumentoIdent;
+        this.numero = numero;
+        this.DataNascimento = DataNascimento;
+        this.contacto = contacto;
+        this.contactoEmerg = contactoEmerg;
+        this.DataRegisto = DataRegisto;
     }
+
+  
+  
+   
+
+   
+   
    
      @Id 
 @GeneratedValue
@@ -80,15 +87,31 @@ public class Cliente  implements java.io.Serializable {
         this.nome = nome;
     }
 
-    
-    @Column(name="apelido", length=45)
-    public String getApelido() {
-        return this.apelido;
+    public Date getDataNascimento() {
+        return DataNascimento;
     }
-    
-    public void setApelido(String apelido) {
-        this.apelido = apelido;
+
+    public void setDataNascimento(Date DataNascimento) {
+        this.DataNascimento = DataNascimento;
     }
+
+    public Date getDataRegisto() {
+        return DataRegisto;
+    }
+
+    public void setDataRegisto(Date DataRegisto) {
+        this.DataRegisto = DataRegisto;
+    }
+
+    
+//    @Column(name="apelido", length=45)
+//    public String getApelido() {
+//        return this.apelido;
+//    }
+//    
+//    public void setApelido(String apelido) {
+//        this.apelido = apelido;
+//    }
 
     
     @Column(name="genero", length=45)
@@ -130,25 +153,26 @@ public class Cliente  implements java.io.Serializable {
         this.tipoDecumentoIdent = tipoDecumentoIdent;
     }
 
-    
-    @Column(name="nomero", length=45)
-    public String getNomero() {
-        return this.nomero;
-    }
-    
-    public void setNomero(String nomero) {
-        this.nomero = nomero;
+    public String getNumero() {
+        return numero;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name="validade", length=10)
-    public Date getValidade() {
-        return this.validade;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
+
     
-    public void setValidade(Date validade) {
-        this.validade = validade;
-    }
+  
+
+//    @Temporal(TemporalType.DATE)
+//    @Column(name="validade", length=10)
+//    public Date getValidade() {
+//        return this.validade;
+//    }
+//    
+//    public void setValidade(Date validade) {
+//        this.validade = validade;
+//    }
 
     
     @Column(name="contacto", length=45)
